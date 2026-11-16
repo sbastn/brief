@@ -1,6 +1,6 @@
 ---
 name: brief-components
-description: Components of the Brief design system and the rules for using them. So far, the button. Use when adding, styling or choosing a button in a project that uses Brief.
+description: Components of the Brief design system and the rules for using them. So far, the button and the link. Use when adding, styling or choosing a button or a link in a project that uses Brief.
 ---
 
 # Brief components
@@ -10,7 +10,7 @@ Read `brief-foundations` first. Components are built from its tokens and follow 
 Each component has:
 
 - a section below: when to use it, its variants, sizes and states, and what not to do;
-- a stylesheet next to this file (`button.css`), written with tokens only;
+- a stylesheet next to this file (`button.css`, `link.css`), written with tokens only;
 - a reference page in `reference/` that shows every variant, size and state.
 
 The class names in the stylesheets (`.b-button`, `.b-button--primary`) are one way to build the component. In React or another framework, keep the structure, the tokens and the rules, not necessarily the class names.
@@ -19,7 +19,7 @@ If you can run a browser, render the reference page next to your result before y
 
 ## Button
 
-A button does something on this page: saves, deletes, opens a dialog. If it takes the person somewhere else, it's a link. A link may look like a button when it's the main way forward (`<a class="b-button">`), but it stays an `<a>`.
+A button does something on this page: saves, deletes, opens a dialog. If it takes the person somewhere else, it's a link (see Link). A link may look like a button when it's the main way forward (`<a class="b-button">`), but it stays an `<a>`.
 
 Reference: `reference/button.html`.
 
@@ -68,3 +68,42 @@ In a row of actions, the primary goes last (right in left-to-right layouts), wit
 
 - Use `<button type="button">`, or `type="submit"` for the button that submits a form. Never a `<div>` with a click handler.
 - `[data-state]` in `button.css` only exists so reference pages can show states in a static render. Never set it in a product.
+
+## Link
+
+A link takes the person somewhere: another page, another part of this page, another site. If it does something here, it's a button.
+
+Reference: `reference/link.html`.
+
+### Variants
+
+| Variant | Use for |
+|---|---|
+| Inline (`.b-link`) | A link inside a sentence. |
+| Muted (`--muted`) | A link inside secondary text: hints, footers, metadata lines. It takes the surrounding color. |
+| Standalone (`--standalone`) | A link on its own line, after a list or summary: "View all records →". |
+| External (`--external`) | A link to another site. Combine it with the others: `b-link b-link--external`. |
+
+### Rules
+
+- **Inline links are always underlined.** Color alone doesn't mark a link for everyone. The underline is quiet at rest and full strength on hover and focus.
+- **Standalone links have no underline at rest.** Their position already says they're links. End them with " →" when they lead to more of the same thing.
+- **The link text says where it goes.** "check the activity log", not "click here" or "this page". It should make sense read on its own, as screen readers list links out of context.
+- **External links open in the same tab** unless leaving would lose work in progress. If one opens a new tab, say so in the label or in visually hidden text ("opens in a new tab").
+- **No visited style** in product UI. Visited colors help when reading content; in an app, they just make the same link look different.
+- **A link can look like a button** when it's the main way forward (`<a class="b-button b-button--primary">`). It's still an `<a>`, and it still goes somewhere.
+
+### States
+
+Hover darkens the color and strengthens the underline. Pressed darkens it further. Focus draws the focus ring around the text. Never remove the focus ring.
+
+### Don't
+
+- Don't use a link to submit, save or delete. Those are buttons.
+- Don't underline a standalone link at rest, or remove the underline from an inline one.
+- Don't put more than a couple of links in one sentence. If everything is a link, nothing stands out.
+
+### Building it
+
+- Use `<a href>`. A link without a real destination is a button.
+- `[data-state]` in `link.css` only exists so reference pages can show states in a static render. Never set it in a product.

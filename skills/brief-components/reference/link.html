@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Link · Brief reference</title>
+	<link rel="stylesheet" href="../../brief-foundations/tokens.css">
+	<link rel="stylesheet" href="../../brief-foundations/configs/default.css">
+	<link rel="stylesheet" href="../link.css">
+	<link rel="stylesheet" href="../button.css">
+	<link rel="stylesheet" href="reference.css">
+</head>
+<body>
+	<main class="ref">
+		<header class="ref-intro">
+			<h1>Link</h1>
+			<p>A link takes you somewhere: another page, another part of this page, another site. Rules are in <code>brief-components/SKILL.md</code>; this page shows the result.</p>
+		</header>
+
+		<section class="ref-section" aria-labelledby="inline">
+			<div>
+				<h2 id="inline">Inline</h2>
+				<p>Inside a sentence. Always underlined, so it doesn't rely on color alone. The underline is quiet at rest and full strength on hover and focus.</p>
+			</div>
+			<div class="ref-panel ref-stack">
+				<p class="ref-prose">Your changes go live within a minute. If something looks wrong, <a class="b-link" href="#">check the activity log</a> or <a class="b-link" href="#">undo the last change</a>.</p>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="states">
+			<div>
+				<h2 id="states">States</h2>
+				<p>Hover, pressed and focus are forced here with <code>data-state</code> so a static render shows them. Links have no visited style in product UI.</p>
+			</div>
+			<div class="ref-panel">
+				<table class="ref-matrix">
+					<thead><tr><th></th><th scope="col">Rest</th><th scope="col">Hover</th><th scope="col">Pressed</th><th scope="col">Focus</th></tr></thead>
+					<tbody>
+						<tr><th scope="row">Inline</th><td><a class="b-link" href="#">activity log</a></td><td><a class="b-link" href="#" data-state="hover">activity log</a></td><td><a class="b-link" href="#" data-state="active">activity log</a></td><td><a class="b-link" href="#" data-state="focus">activity log</a></td></tr>
+						<tr><th scope="row">Muted</th><td class="ref-meta"><a class="b-link b-link--muted" href="#">Privacy</a></td><td class="ref-meta"><a class="b-link b-link--muted" href="#" data-state="hover">Privacy</a></td><td class="ref-meta"><a class="b-link b-link--muted" href="#" data-state="active">Privacy</a></td><td class="ref-meta"><a class="b-link b-link--muted" href="#" data-state="focus">Privacy</a></td></tr>
+						<tr><th scope="row">Standalone</th><td><a class="b-link b-link--standalone" href="#">View all records →</a></td><td><a class="b-link b-link--standalone" href="#" data-state="hover">View all records →</a></td><td><a class="b-link b-link--standalone" href="#" data-state="active">View all records →</a></td><td><a class="b-link b-link--standalone" href="#" data-state="focus">View all records →</a></td></tr>
+						<tr><th scope="row">External</th><td><a class="b-link b-link--external" href="#">DNS basics</a></td><td><a class="b-link b-link--external" href="#" data-state="hover">DNS basics</a></td><td><a class="b-link b-link--external" href="#" data-state="active">DNS basics</a></td><td><a class="b-link b-link--external" href="#" data-state="focus">DNS basics</a></td></tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="muted">
+			<div>
+				<h2 id="muted">Muted</h2>
+				<p>Inside secondary text: hints, footers, metadata. It takes the surrounding color, so it doesn't outshout the text around it.</p>
+			</div>
+			<div class="ref-panel">
+				<p class="ref-meta">Last changed 12 minutes ago by Marisol · <a class="b-link b-link--muted" href="#">See history</a></p>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="standalone">
+			<div>
+				<h2 id="standalone">Standalone</h2>
+				<p>On its own line, after a list or a summary. No underline at rest, because its position already says it's a link; the arrow says it goes further.</p>
+			</div>
+			<div class="ref-panel ref-stack">
+				<p class="ref-prose">3 records changed today.</p>
+				<a class="b-link b-link--standalone" href="#">View all records →</a>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="external">
+			<div>
+				<h2 id="external">External</h2>
+				<p>Goes to another site. The arrow marks it. Opens in the same tab unless leaving would lose work.</p>
+			</div>
+			<div class="ref-panel">
+				<p class="ref-prose">New to nameservers? Read <a class="b-link b-link--external" href="#">DNS basics</a> first.</p>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="vs">
+			<div>
+				<h2 id="vs">Link or button</h2>
+				<p>If it goes somewhere, it's a link. If it does something here, it's a button. The main way forward may look like a button and still be a link.</p>
+			</div>
+			<div class="ref-panel ref-row">
+				<a class="b-link b-link--standalone" href="#">Learn about record types →</a>
+				<button class="b-button" type="button">Save changes</button>
+				<a class="b-button b-button--primary" href="#">Go to your domains</a>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

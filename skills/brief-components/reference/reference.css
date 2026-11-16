@@ -32,3 +32,6 @@ body {
 .ref-footer { display: flex; justify-content: flex-end; gap: var(--space-3); padding-top: var(--space-4); border-top: var(--border-width) solid var(--border-subtle); }
 .ref-toolbar { display: flex; gap: var(--space-1); align-items: center; }
 .ref-toolbar .ref-spacer { flex: 1; }
+.ref .ref-prose { color: var(--text); font-size: var(--text-md); }
+.ref .ref-meta { color: var(--text-muted); font-size: var(--text-xs); }
+.ref-stack { display: grid; gap: var(--space-4); }

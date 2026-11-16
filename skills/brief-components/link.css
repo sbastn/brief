@@ -1,0 +1,69 @@
+/*
+ * Link. Tokens only.
+ *
+ * [data-state] forces a state so a static render can show hover, active and focus.
+ * Real pages never set it.
+ */
+
+.b-link {
+	color: var(--accent-text);
+	text-decoration-line: underline;
+	text-decoration-thickness: var(--border-width);
+	text-decoration-color: var(--accent-soft-border);
+	text-underline-offset: 0.2em;
+	border-radius: var(--radius-sm);
+	cursor: pointer;
+	transition:
+		color var(--duration-fast) var(--ease),
+		text-decoration-color var(--duration-fast) var(--ease);
+}
+
+.b-link:hover,
+.b-link[data-state='hover'] {
+	color: var(--accent-hover);
+	text-decoration-color: currentColor;
+}
+
+.b-link:active,
+.b-link[data-state='active'] {
+	color: var(--accent-pressed);
+}
+
+.b-link:focus-visible,
+.b-link[data-state='focus'] {
+	outline: var(--focus-width) solid var(--focus-ring);
+	outline-offset: var(--border-width);
+	text-decoration-color: currentColor;
+}
+
+/* Muted: links inside secondary text (hints, footers, metadata) */
+
+.b-link--muted {
+	color: inherit;
+	text-decoration-color: var(--border-strong);
+}
+.b-link--muted:hover,
+.b-link--muted[data-state='hover'] {
+	color: var(--text);
+}
+.b-link--muted:active,
+.b-link--muted[data-state='active'] {
+	color: var(--text);
+}
+
+/* Standalone: a link on its own line, not inside a sentence */
+
+.b-link--standalone {
+	font-weight: var(--weight-medium);
+	text-decoration-color: transparent;
+}
+
+/* External: goes to another site. The arrow is decoration; the label says where it goes. */
+
+.b-link--external::after {
+	content: '\2197' / '';
+	display: inline-block;
+	margin-left: var(--space-0);
+	font-size: 0.85em;
+	text-decoration: none;
+}
