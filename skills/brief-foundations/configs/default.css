@@ -1,0 +1,18 @@
+/*
+ * Brief's default config. A config file only sets knobs; it never sets tokens or styles.
+ * Near-neutral grays, a clear blue accent, medium corners, default density.
+ * Copy this file into your project as your config, then change the knobs.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap');
+
+:root {
+	--brief-brand-hue: 252;
+	--brief-brand-chroma: 0.15;
+	--brief-neutral-hue: 255;
+	--brief-neutral-chroma: 0.006;
+	--brief-radius-base: 6px;
+	--brief-density: 1;
+	--brief-type-base: 15px;
+	--brief-font-sans: 'Geist', system-ui, sans-serif;
+	--brief-font-mono: 'Geist Mono', ui-monospace, monospace;
+}
