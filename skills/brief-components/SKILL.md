@@ -1,6 +1,6 @@
 ---
 name: brief-components
-description: Components of the Brief design system and the rules for using them. So far, typography (text roles), the button, the link, and the field with its text input. Use when styling text, or adding a button, a link, a form field or a text input, in a project that uses Brief.
+description: Components of the Brief design system and the rules for using them. So far, typography (text roles), the button, the link, the field with its text input, and the checkbox and radio. Use when styling text, or adding a button, a link, a form field, a text input, a checkbox or a radio, in a project that uses Brief.
 ---
 
 # Brief components
@@ -10,7 +10,7 @@ Read `brief-foundations` first. Components are built from its tokens and follow 
 Each component has:
 
 - a section below: when to use it, its variants, sizes and states, and what not to do;
-- a stylesheet next to this file (`typography.css`, `button.css`, `link.css`, `field.css`), written with tokens only;
+- a stylesheet next to this file (`typography.css`, `button.css`, `link.css`, `field.css`, `choice.css`), written with tokens only;
 - a reference page in `reference/` that shows every variant, size and state.
 
 `reference/index.html` lists every component, with a preview and a link to its page.
@@ -201,4 +201,45 @@ Rest, hover, focus, filled, invalid (`aria-invalid="true"`), disabled and read-o
 - Point `aria-describedby` at the hint and the error, in that order, so screen readers read them after the label.
 - Set `aria-invalid="true"` on the control while its error shows.
 - `[data-state]` in `field.css` only exists so reference pages can show states in a static render. Never set it in a product.
+
+## Checkbox and radio
+
+Checkboxes pick any number of options, including none. Radios pick exactly one. Both are real `<input>` elements with the browser's look replaced (`.b-checkbox`, `.b-radio`), so keyboards, forms and screen readers work as usual.
+
+Reference: `reference/choice.html`.
+
+### Which one
+
+- **One checkbox** for a single yes/no that's saved with the form: "Send an invite email now".
+- **A checkbox group** when any number of options can apply: "Email me about: invoices, product updates".
+- **Radios** for exactly one of two to five options. More than five needs a select, which Brief doesn't have yet.
+- **Cards** (`.b-choice--card`) when each option needs a sentence to explain, or people compare them, like plans or methods. Up to four.
+- Brief has no switch yet. A checkbox applies when the form is saved; don't use one to change something instantly.
+
+### Anatomy
+
+- An option is a `<label class="b-choice">` wrapping the control and its text, so the whole line is clickable. An optional `.b-choice__hint` goes under the text; on cards, `.b-choice__meta` sits on the right (a price, a duration).
+- A group is a `<fieldset class="b-choices">`. Its `<legend class="b-label">` asks the question. A group error goes right after the legend, before the options, in `.b-choices__intro`.
+
+### Rules
+
+- **Labels say the positive.** "Email me about product updates", never "Don't email me about product updates".
+- **Stack options vertically,** one per line, in a logical order (most common first, or a natural sequence). Never alphabetical for its own sake.
+- **Pre-select a radio** when there's a safe default most people want. Leave all empty only when every choice has consequences the person must think about, and then require one.
+- **Mixed** (indeterminate) is only for a "select all" checkbox when some of its items are selected. It's set from script (`el.indeterminate = true`).
+- **Disabled options say why** in their hint: "Always on. We'll only email you if something needs action."
+- **Errors name what to do:** "Choose a role for sam@example.com", not "This field is required".
+
+### Don't
+
+- Don't use radios for a yes/no. One checkbox is clearer.
+- Don't use a single radio. It can't be unselected.
+- Don't nest groups more than one level (a "select all" and its items).
+- Don't put links inside an option's label. Clicking them toggles the option too.
+
+### Building it
+
+- `<input class="b-checkbox" type="checkbox">` and `<input class="b-radio" type="radio">` with a shared `name` per radio group.
+- Wrap groups in `<fieldset>` with a `<legend>`. Put `aria-describedby` on the fieldset for its error, and `aria-invalid="true"` while it shows.
+- `[data-state]` in `choice.css` only exists so reference pages can show states in a static render. Never set it in a product.
 

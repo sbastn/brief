@@ -60,3 +60,4 @@ body {
 .ref-field-label { font-size: var(--text-2xs); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-subtle); margin-bottom: var(--space-2); }
 .ref-preview-field { width: 100%; max-width: calc(var(--measure) / 2.4); }
 .ref-preview-field .b-input { display: flex; align-items: center; }
+.ref-indent { padding-left: calc(1.15em + var(--space-2)); }

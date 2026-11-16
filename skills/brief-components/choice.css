@@ -1,0 +1,204 @@
+/*
+ * Checkbox and radio. Tokens only.
+ *
+ * The controls are real <input type="checkbox|radio"> with the browser's look removed,
+ * so keyboard, forms and screen readers work as usual. The check and the dot are drawn
+ * with CSS, so they follow the tokens and the theme.
+ *
+ * [data-state] forces hover and focus so a static render can show them. Real pages never set it.
+ */
+
+/* Control --------------------------------------------------------------- */
+
+.b-checkbox,
+.b-radio {
+	appearance: none;
+	display: inline-grid;
+	place-content: center;
+	flex: none;
+	width: 1.15em;
+	height: 1.15em;
+	margin: 0;
+	background: var(--surface);
+	border: var(--border-width) solid var(--border-strong);
+	box-shadow: var(--shadow-inset);
+	cursor: pointer;
+	transition:
+		background var(--duration-fast) var(--ease),
+		border-color var(--duration-fast) var(--ease);
+}
+
+.b-checkbox { border-radius: var(--radius-sm); }
+.b-radio { border-radius: var(--radius-full); }
+
+/* The check: an L rotated 45 degrees */
+.b-checkbox::after {
+	content: '';
+	width: 0.3em;
+	height: 0.55em;
+	border: solid var(--text-on-accent);
+	border-width: 0 var(--border-width-strong) var(--border-width-strong) 0;
+	transform: translateY(-10%) rotate(45deg) scale(0);
+	transition: transform var(--duration-fast) var(--ease);
+}
+
+/* The dot */
+.b-radio::after {
+	content: '';
+	width: 0.42em;
+	height: 0.42em;
+	border-radius: var(--radius-full);
+	background: var(--text-on-accent);
+	transform: scale(0);
+	transition: transform var(--duration-fast) var(--ease);
+}
+
+.b-checkbox:hover,
+.b-radio:hover,
+.b-checkbox[data-state='hover'],
+.b-radio[data-state='hover'] {
+	border-color: var(--accent);
+}
+
+.b-checkbox:focus-visible,
+.b-radio:focus-visible,
+.b-checkbox[data-state='focus'],
+.b-radio[data-state='focus'] {
+	outline: none;
+	box-shadow: 0 0 0 var(--focus-width) var(--focus-ring);
+}
+
+.b-checkbox:checked,
+.b-checkbox:indeterminate,
+.b-radio:checked {
+	background: var(--accent);
+	border-color: var(--accent);
+}
+.b-checkbox:checked:hover,
+.b-checkbox:indeterminate:hover,
+.b-radio:checked:hover {
+	background: var(--accent-hover);
+	border-color: var(--accent-hover);
+}
+
+.b-checkbox:checked::after { transform: translateY(-10%) rotate(45deg) scale(1); }
+.b-radio:checked::after { transform: scale(1); }
+
+/* Indeterminate: a dash, for a "select all" that's partly selected */
+.b-checkbox:indeterminate::after {
+	width: 0.55em;
+	height: 0;
+	border-width: var(--border-width-strong) 0 0 0;
+	transform: none;
+}
+
+.b-checkbox[aria-invalid='true'],
+.b-radio[aria-invalid='true'],
+[aria-invalid='true'] .b-checkbox,
+[aria-invalid='true'] .b-radio {
+	border-color: var(--danger);
+}
+
+.b-checkbox:disabled,
+.b-radio:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+/* One option: control plus its label, and an optional hint under the label */
+
+.b-choice {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	column-gap: var(--space-2);
+	align-items: start;
+	font-size: var(--text-sm);
+	line-height: var(--leading-snug);
+	color: var(--text);
+	cursor: pointer;
+}
+
+.b-choice > .b-checkbox,
+.b-choice > .b-radio {
+	margin-top: calc((1lh - 1.15em) / 2);
+}
+
+.b-choice__hint {
+	grid-column: 2;
+	margin-top: var(--space-0);
+	font-size: var(--text-xs);
+	color: var(--text-muted);
+}
+
+.b-choice__meta {
+	color: var(--text-muted);
+}
+
+.b-choice:has(:disabled) {
+	color: var(--text-subtle);
+	cursor: not-allowed;
+}
+
+/* A group: a fieldset whose legend asks the question */
+
+.b-choices {
+	display: grid;
+	gap: var(--space-3);
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.b-choices > legend {
+	padding: 0;
+	margin-bottom: var(--space-1);
+}
+
+.b-choices__intro {
+	display: grid;
+	gap: var(--space-1);
+	margin-top: calc(var(--space-1) * -1);
+}
+
+/* Card: an option that needs more than a line to explain, or that people compare */
+
+.b-choice--card {
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	column-gap: var(--space-3);
+	padding: var(--space-4);
+	background: var(--surface);
+	border: var(--border-width) solid var(--border);
+	border-radius: var(--radius-lg);
+	transition:
+		border-color var(--duration-fast) var(--ease),
+		background var(--duration-fast) var(--ease);
+}
+.b-choice--card:hover {
+	border-color: var(--border-strong);
+}
+.b-choice--card:has(:checked) {
+	background: var(--surface-selected);
+	border-color: var(--accent);
+	box-shadow: 0 0 0 var(--border-width) var(--accent);
+}
+.b-choice--card:has(:focus-visible),
+.b-choice--card:has([data-state='focus']) {
+	box-shadow: 0 0 0 var(--border-width) var(--accent), 0 0 0 calc(var(--focus-width) + var(--border-width)) var(--focus-ring);
+}
+.b-choice--card > .b-checkbox:focus-visible,
+.b-choice--card > .b-radio:focus-visible {
+	box-shadow: none;
+}
+.b-choice--card .b-choice__title {
+	font-weight: var(--weight-semibold);
+}
+.b-choice--card .b-choice__hint {
+	font-size: var(--text-sm);
+}
+.b-choice--card .b-choice__meta {
+	grid-column: 3;
+	grid-row: 1;
+	font-size: var(--text-xs);
+	white-space: nowrap;
+}

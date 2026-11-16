@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Checkbox and radio · Brief reference</title>
+	<link rel="stylesheet" href="../../brief-foundations/tokens.css">
+	<link rel="stylesheet" href="../../brief-foundations/configs/default.css">
+	<link rel="stylesheet" href="../typography.css">
+	<link rel="stylesheet" href="../field.css">
+	<link rel="stylesheet" href="../choice.css">
+	<link rel="stylesheet" href="../button.css">
+	<link rel="stylesheet" href="../link.css">
+	<link rel="stylesheet" href="reference.css">
+	<script src="reference.js"></script>
+</head>
+<body>
+	<main class="ref">
+		<div class="ref-bar">
+			<a class="b-link b-link--standalone ref-back" href="index.html">← All components</a>
+			<button class="b-button b-button--ghost b-button--sm" type="button" data-theme-toggle>Theme: System</button>
+		</div>
+		<header class="ref-intro">
+			<h1>Checkbox and radio</h1>
+			<p>Checkboxes pick any number of options, including none. Radios pick exactly one. Both are real inputs with the browser's look replaced, so keyboards, forms and screen readers work as usual. Rules are in <code>brief-components/SKILL.md</code>.</p>
+		</header>
+
+		<section class="ref-section" aria-labelledby="states">
+			<div>
+				<h2 id="states">States</h2>
+				<p>Hover and focus are forced here with <code>data-state</code>. Mixed is only for a "select all" checkbox when some, not all, of its items are selected.</p>
+			</div>
+			<div class="ref-panel">
+				<table class="ref-matrix">
+					<thead><tr><th></th><th scope="col">Rest</th><th scope="col">Hover</th><th scope="col">Focus</th><th scope="col">Checked</th><th scope="col">Mixed</th><th scope="col">Disabled</th><th scope="col">Disabled, checked</th><th scope="col">Invalid</th></tr></thead>
+					<tbody>
+						<tr><th scope="row">Checkbox</th><td><input class="b-checkbox" type="checkbox" name="c-Rest" aria-label="checkbox rest"></td><td><input class="b-checkbox" type="checkbox" name="c-Hover" aria-label="checkbox hover" data-state="hover"></td><td><input class="b-checkbox" type="checkbox" name="c-Focus" aria-label="checkbox focus" data-state="focus"></td><td><input class="b-checkbox" type="checkbox" name="c-Checked" aria-label="checkbox checked" checked></td><td><input class="b-checkbox" type="checkbox" name="c-Mixed" aria-label="checkbox mixed" data-indeterminate></td><td><input class="b-checkbox" type="checkbox" name="c-Disabled" aria-label="checkbox disabled" disabled></td><td><input class="b-checkbox" type="checkbox" name="c-Disabled, checked" aria-label="checkbox disabled, checked" disabled checked></td><td><input class="b-checkbox" type="checkbox" name="c-Invalid" aria-label="checkbox invalid" aria-invalid="true"></td></tr>
+						<tr><th scope="row">Radio</th><td><input class="b-radio" type="radio" name="r-Rest" aria-label="radio rest"></td><td><input class="b-radio" type="radio" name="r-Hover" aria-label="radio hover" data-state="hover"></td><td><input class="b-radio" type="radio" name="r-Focus" aria-label="radio focus" data-state="focus"></td><td><input class="b-radio" type="radio" name="r-Checked" aria-label="radio checked" checked></td><td><span class="ref-label">—</span></td><td><input class="b-radio" type="radio" name="r-Disabled" aria-label="radio disabled" disabled></td><td><input class="b-radio" type="radio" name="r-Disabled, checked" aria-label="radio disabled, checked" disabled checked></td><td><input class="b-radio" type="radio" name="r-Invalid" aria-label="radio invalid" aria-invalid="true"></td></tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="checkboxes">
+			<div>
+				<h2 id="checkboxes">Checkboxes</h2>
+				<p>A group is a fieldset; its legend asks the question. Each label says the positive: "Email me about…", never "Don't email me".</p>
+			</div>
+			<div class="ref-panel ref-columns">
+				<fieldset class="b-choices">
+					<legend class="b-label">Email me about</legend>
+					<label class="b-choice"><input class="b-checkbox" type="checkbox" name="n" checked><span>Invoices and payments</span></label>
+					<label class="b-choice"><input class="b-checkbox" type="checkbox" name="n"><span>Product updates</span><span class="b-choice__hint">About once a month.</span></label>
+					<label class="b-choice"><input class="b-checkbox" type="checkbox" name="n" checked disabled><span>Security alerts</span><span class="b-choice__hint">Always on. We'll only email you if something needs action.</span></label>
+				</fieldset>
+				<fieldset class="b-choices">
+					<legend class="b-label">Export</legend>
+					<label class="b-choice"><input class="b-checkbox" type="checkbox" data-indeterminate aria-label="Select all projects"><span>All projects</span></label>
+					<div class="b-choices ref-indent">
+						<label class="b-choice"><input class="b-checkbox" type="checkbox" name="p" checked><span>Spring launch</span></label>
+						<label class="b-choice"><input class="b-checkbox" type="checkbox" name="p"><span>Website refresh</span></label>
+						<label class="b-choice"><input class="b-checkbox" type="checkbox" name="p" checked><span>Onboarding emails</span></label>
+					</div>
+				</fieldset>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="radios">
+			<div>
+				<h2 id="radios">Radios</h2>
+				<p>Two to five options, stacked. Pre-select the safe default when there is one.</p>
+			</div>
+			<div class="ref-panel">
+				<fieldset class="b-choices">
+					<legend class="b-label">Role</legend>
+					<label class="b-choice"><input class="b-radio" type="radio" name="role"><span>Admin</span><span class="b-choice__hint">Can change billing, members and settings.</span></label>
+					<label class="b-choice"><input class="b-radio" type="radio" name="role" checked><span>Editor</span><span class="b-choice__hint">Can create and change projects.</span></label>
+					<label class="b-choice"><input class="b-radio" type="radio" name="role"><span>Viewer</span><span class="b-choice__hint">Can see projects but not change them.</span></label>
+				</fieldset>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="cards">
+			<div>
+				<h2 id="cards">Cards</h2>
+				<p>When each option needs a sentence to explain, or people compare them. Up to four.</p>
+			</div>
+			<div class="ref-panel">
+				<fieldset class="b-choices">
+					<legend class="b-label">Plan</legend>
+					<label class="b-choice b-choice--card"><input class="b-radio" type="radio" name="plan"><span class="b-choice__title">Free</span><span class="b-choice__meta">€0</span><span class="b-choice__hint">One project and up to 3 members.</span></label>
+					<label class="b-choice b-choice--card"><input class="b-radio" type="radio" name="plan" checked><span class="b-choice__title">Pro</span><span class="b-choice__meta">€12 per member / month</span><span class="b-choice__hint">Unlimited projects, roles and an activity log.</span></label>
+					<label class="b-choice b-choice--card"><input class="b-radio" type="radio" name="plan"><span class="b-choice__title">Enterprise</span><span class="b-choice__meta">Talk to us</span><span class="b-choice__hint">Single sign-on, audit exports and a support contract.</span></label>
+				</fieldset>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="form">
+			<div>
+				<h2 id="form">In a form</h2>
+				<p>The group's error goes under the legend, before the options, and names what to do.</p>
+			</div>
+			<div class="ref-panel">
+				<form class="b-form" onsubmit="return false">
+					<div class="b-field">
+						<label class="b-label" for="f-email">Email address</label>
+						<input class="b-input" id="f-email" type="email" value="sam@example.com" autocomplete="off">
+					</div>
+					<fieldset class="b-choices" aria-describedby="f-role-error" aria-invalid="true">
+						<legend class="b-label">Role</legend>
+						<div class="b-choices__intro"><p class="b-error" id="f-role-error">Choose a role for sam@example.com</p></div>
+						<label class="b-choice"><input class="b-radio" type="radio" name="frole"><span>Admin</span><span class="b-choice__hint">Can change billing, members and settings.</span></label>
+						<label class="b-choice"><input class="b-radio" type="radio" name="frole"><span>Editor</span><span class="b-choice__hint">Can create and change projects.</span></label>
+						<label class="b-choice"><input class="b-radio" type="radio" name="frole"><span>Viewer</span><span class="b-choice__hint">Can see projects but not change them.</span></label>
+					</fieldset>
+					<label class="b-choice"><input class="b-checkbox" type="checkbox" checked><span>Send an invite email now</span></label>
+					<div class="b-form__actions">
+						<button class="b-button" type="button">Cancel</button>
+						<button class="b-button b-button--primary" type="submit">Add member</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</main>
+	<script>
+		// Indeterminate can only be set from script
+		document.querySelectorAll('[data-indeterminate]').forEach((el) => (el.indeterminate = true));
+	</script>
+</body>
+</html>

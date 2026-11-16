@@ -2,14 +2,14 @@
 
 A design system made of agent skills. There's no component library: the skills are the system, and agents write the UI in whatever stack the project uses.
 
-So far Brief has its foundations (the tokens every value comes from, and the rules for using them) and its first components: typography, the button, the link, and the field with its text input.
+So far Brief has its foundations (the tokens every value comes from, and the rules for using them) and its first components: typography, the button, the link, the field with its text input, and the checkbox and radio.
 
 ## Skills
 
 | Skill | For |
 |---|---|
 | `brief-foundations` | Tokens for color, type, space, radius, elevation and motion, and the config knobs that set them. |
-| `brief-components` | Components and the rules for using them. So far: typography, button, link, field and text input. |
+| `brief-components` | Components and the rules for using them. So far: typography, button, link, field and text input, checkbox and radio. |
 
 ## How it works
 
