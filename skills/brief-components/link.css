@@ -20,13 +20,13 @@
 
 .b-link:hover,
 .b-link[data-state='hover'] {
-	color: var(--accent-hover);
+	color: var(--accent-text-hover);
 	text-decoration-color: currentColor;
 }
 
 .b-link:active,
 .b-link[data-state='active'] {
-	color: var(--accent-pressed);
+	color: var(--accent-text-pressed);
 }
 
 .b-link:focus-visible,

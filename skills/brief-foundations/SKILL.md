@@ -1,6 +1,6 @@
 ---
 name: brief-foundations
-description: Foundations of the Brief design system — the tokens for color, type, space, radius, elevation and motion, and the config knobs that set them. Use before writing or changing any UI styles in a project that uses Brief.
+description: Foundations of the Brief design system — the tokens for color, type, space, radius, elevation and motion, the config knobs that set them, and light and dark themes. Use before writing or changing any UI styles in a project that uses Brief.
 ---
 
 # Brief foundations
@@ -32,7 +32,8 @@ Allowed exceptions: `0`, percentages, unitless line heights and flex values, and
 | Text, secondary, tertiary | `--text`, `--text-muted`, `--text-subtle` |
 | Lines | `--border-subtle` (inside a surface), `--border` (around controls), `--border-strong` (hover) |
 | The primary action | `--accent`, `--accent-hover`, `--accent-pressed`, `--text-on-accent` |
-| Selected or recommended | `--surface-selected`, `--accent-soft`, `--accent-soft-border`, `--accent-text` |
+| Selected or recommended | `--surface-selected`, `--accent-soft`, `--accent-soft-border` |
+| Links and accent-colored text | `--accent-text`, `--accent-text-hover`, `--accent-text-pressed` |
 | Status | `--success`, `--warning`, `--danger`, `--info`, each with `-soft` and `-border` |
 | Focus | `--focus-ring`, `--focus-width` |
 | Space | `--space-0` … `--space-16` (a 4px grid scaled by density) |
@@ -42,6 +43,19 @@ Allowed exceptions: `0`, percentages, unitless line heights and flex values, and
 | Motion | `--duration-fast`, `--duration-normal`, `--duration-spin`, `--ease` |
 
 Scale tokens (`--gray-*`, `--brand-*`) exist to build the semantic tokens above. Screens use semantic tokens.
+
+## Light and dark
+
+Every color token has a light and a dark value, written with `light-dark()` in `tokens.css`. Which one applies follows `color-scheme`:
+
+- By default, the person's OS setting.
+- `data-theme="light"` or `data-theme="dark"` on `<html>` forces one. Remove the attribute to follow the OS again.
+
+Because screens only use tokens, they get dark mode for free. Rules:
+
+- Never write a color for one theme only. If something looks wrong in dark, the token is wrong; fix it in `tokens.css` for both.
+- Don't use `--accent` or `--accent-hover` for text. They're fills, and in dark mode they're too dark to read. Text uses `--accent-text*`.
+- Check every new component in both themes before calling it done.
 
 ## Type
 

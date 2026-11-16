@@ -54,3 +54,5 @@ body {
 .ref-card__body a::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); }
 .ref-card__body .b-link { text-decoration: none; color: var(--text); }
 .ref-preview-type { display: grid; gap: var(--space-1); text-align: left; }
+.ref-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.ref-bar > :only-child { margin-left: auto; }

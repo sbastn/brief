@@ -23,25 +23,27 @@
 
 	/* 2. Tokens ----------------------------------------------------------- */
 
-	/* Neutrals: 0 is the page, 12 is body text */
-	--gray-0: oklch(0.993 calc(var(--brief-neutral-chroma) * 0.4) var(--brief-neutral-hue));
-	--gray-1: oklch(0.978 calc(var(--brief-neutral-chroma) * 0.6) var(--brief-neutral-hue));
-	--gray-2: oklch(0.955 var(--brief-neutral-chroma) var(--brief-neutral-hue));
-	--gray-3: oklch(0.925 var(--brief-neutral-chroma) var(--brief-neutral-hue));
-	--gray-4: oklch(0.885 var(--brief-neutral-chroma) var(--brief-neutral-hue));
-	--gray-5: oklch(0.82 var(--brief-neutral-chroma) var(--brief-neutral-hue));
-	--gray-6: oklch(0.72 var(--brief-neutral-chroma) var(--brief-neutral-hue));
-	--gray-7: oklch(0.6 var(--brief-neutral-chroma) var(--brief-neutral-hue));
-	--gray-8: oklch(0.5 var(--brief-neutral-chroma) var(--brief-neutral-hue));
-	--gray-9: oklch(0.42 var(--brief-neutral-chroma) var(--brief-neutral-hue));
-	--gray-10: oklch(0.34 var(--brief-neutral-chroma) var(--brief-neutral-hue));
-	--gray-11: oklch(0.27 var(--brief-neutral-chroma) var(--brief-neutral-hue));
-	--gray-12: oklch(0.2 var(--brief-neutral-chroma) var(--brief-neutral-hue));
+	/* Color. Each token is light-dark(light value, dark value); see the theme section at the end. */
 
-	/* Brand */
-	--brand-1: oklch(0.97 calc(var(--brief-brand-chroma) * 0.18) var(--brief-brand-hue));
-	--brand-2: oklch(0.93 calc(var(--brief-brand-chroma) * 0.35) var(--brief-brand-hue));
-	--brand-3: oklch(0.86 calc(var(--brief-brand-chroma) * 0.6) var(--brief-brand-hue));
+	/* Neutrals: 0 is raised surfaces, 1 the page, 12 body text. Dark mode runs the same scale from dark to light. */
+	--gray-0: light-dark(oklch(0.993 calc(var(--brief-neutral-chroma) * 0.4) var(--brief-neutral-hue)), oklch(0.215 calc(var(--brief-neutral-chroma) * 0.4) var(--brief-neutral-hue)));
+	--gray-1: light-dark(oklch(0.978 calc(var(--brief-neutral-chroma) * 0.6) var(--brief-neutral-hue)), oklch(0.18 calc(var(--brief-neutral-chroma) * 0.6) var(--brief-neutral-hue)));
+	--gray-2: light-dark(oklch(0.955 var(--brief-neutral-chroma) var(--brief-neutral-hue)), oklch(0.25 var(--brief-neutral-chroma) var(--brief-neutral-hue)));
+	--gray-3: light-dark(oklch(0.925 var(--brief-neutral-chroma) var(--brief-neutral-hue)), oklch(0.28 var(--brief-neutral-chroma) var(--brief-neutral-hue)));
+	--gray-4: light-dark(oklch(0.885 var(--brief-neutral-chroma) var(--brief-neutral-hue)), oklch(0.33 var(--brief-neutral-chroma) var(--brief-neutral-hue)));
+	--gray-5: light-dark(oklch(0.82 var(--brief-neutral-chroma) var(--brief-neutral-hue)), oklch(0.39 var(--brief-neutral-chroma) var(--brief-neutral-hue)));
+	--gray-6: light-dark(oklch(0.72 var(--brief-neutral-chroma) var(--brief-neutral-hue)), oklch(0.47 var(--brief-neutral-chroma) var(--brief-neutral-hue)));
+	--gray-7: light-dark(oklch(0.6 var(--brief-neutral-chroma) var(--brief-neutral-hue)), oklch(0.56 var(--brief-neutral-chroma) var(--brief-neutral-hue)));
+	--gray-8: light-dark(oklch(0.5 var(--brief-neutral-chroma) var(--brief-neutral-hue)), oklch(0.64 var(--brief-neutral-chroma) var(--brief-neutral-hue)));
+	--gray-9: light-dark(oklch(0.42 var(--brief-neutral-chroma) var(--brief-neutral-hue)), oklch(0.74 var(--brief-neutral-chroma) var(--brief-neutral-hue)));
+	--gray-10: light-dark(oklch(0.34 var(--brief-neutral-chroma) var(--brief-neutral-hue)), oklch(0.83 var(--brief-neutral-chroma) var(--brief-neutral-hue)));
+	--gray-11: light-dark(oklch(0.27 var(--brief-neutral-chroma) var(--brief-neutral-hue)), oklch(0.9 var(--brief-neutral-chroma) var(--brief-neutral-hue)));
+	--gray-12: light-dark(oklch(0.2 var(--brief-neutral-chroma) var(--brief-neutral-hue)), oklch(0.955 var(--brief-neutral-chroma) var(--brief-neutral-hue)));
+
+	/* Brand: 1-3 are tints for backgrounds and borders, 6-9 are fills */
+	--brand-1: light-dark(oklch(0.97 calc(var(--brief-brand-chroma) * 0.18) var(--brief-brand-hue)), oklch(0.27 calc(var(--brief-brand-chroma) * 0.35) var(--brief-brand-hue)));
+	--brand-2: light-dark(oklch(0.93 calc(var(--brief-brand-chroma) * 0.35) var(--brief-brand-hue)), oklch(0.32 calc(var(--brief-brand-chroma) * 0.45) var(--brief-brand-hue)));
+	--brand-3: light-dark(oklch(0.86 calc(var(--brief-brand-chroma) * 0.6) var(--brief-brand-hue)), oklch(0.42 calc(var(--brief-brand-chroma) * 0.6) var(--brief-brand-hue)));
 	--brand-6: oklch(0.6 var(--brief-brand-chroma) var(--brief-brand-hue));
 	--brand-7: oklch(0.52 var(--brief-brand-chroma) var(--brief-brand-hue));
 	--brand-8: oklch(0.46 var(--brief-brand-chroma) var(--brief-brand-hue));
@@ -50,7 +52,7 @@
 	/* Semantic color: screens use these, never the scales above */
 	--surface: var(--gray-0);
 	--surface-page: var(--gray-1);
-	--surface-sunken: var(--gray-2);
+	--surface-sunken: light-dark(var(--gray-2), oklch(0.16 var(--brief-neutral-chroma) var(--brief-neutral-hue)));
 	--surface-hover: var(--gray-2);
 	--surface-selected: var(--brand-1);
 	--text: var(--gray-12);
@@ -61,26 +63,29 @@
 	--border-subtle: var(--gray-3);
 	--border-strong: var(--gray-6);
 	--accent: var(--brand-7);
-	--accent-hover: var(--brand-8);
-	--accent-pressed: var(--brand-9);
+	--accent-hover: light-dark(var(--brand-8), var(--brand-6));
+	--accent-pressed: light-dark(var(--brand-9), var(--brand-8));
 	--accent-soft: var(--brand-1);
 	--accent-soft-border: var(--brand-3);
-	--accent-text: var(--brand-8);
-	--focus-ring: oklch(0.6 var(--brief-brand-chroma) var(--brief-brand-hue) / 0.45);
+	--accent-text: light-dark(var(--brand-8), oklch(0.8 calc(var(--brief-brand-chroma) * 0.75) var(--brief-brand-hue)));
+	--accent-text-hover: light-dark(var(--brand-9), oklch(0.87 calc(var(--brief-brand-chroma) * 0.6) var(--brief-brand-hue)));
+	--accent-text-pressed: light-dark(var(--brand-9), oklch(0.92 calc(var(--brief-brand-chroma) * 0.45) var(--brief-brand-hue)));
+	--focus-ring: light-dark(oklch(0.6 var(--brief-brand-chroma) var(--brief-brand-hue) / 0.45), oklch(0.72 var(--brief-brand-chroma) var(--brief-brand-hue) / 0.55));
 
-	--success: oklch(0.5 0.12 150);
-	--success-soft: oklch(0.96 0.03 150);
-	--success-border: oklch(0.85 0.07 150);
-	--warning: oklch(0.52 0.12 70);
-	--warning-soft: oklch(0.97 0.04 85);
-	--warning-border: oklch(0.86 0.09 80);
-	--danger: oklch(0.52 0.18 27);
-	--danger-hover: oklch(0.46 0.18 27);
-	--danger-soft: oklch(0.97 0.02 27);
-	--danger-border: oklch(0.86 0.07 27);
-	--info: oklch(0.5 0.12 240);
-	--info-soft: oklch(0.97 0.02 240);
-	--info-border: oklch(0.86 0.06 240);
+	/* Status. The base color is also the text color on its -soft background. --danger is also a fill. */
+	--success: light-dark(oklch(0.5 0.12 150), oklch(0.78 0.13 150));
+	--success-soft: light-dark(oklch(0.96 0.03 150), oklch(0.27 0.04 150));
+	--success-border: light-dark(oklch(0.85 0.07 150), oklch(0.42 0.07 150));
+	--warning: light-dark(oklch(0.52 0.12 70), oklch(0.82 0.12 80));
+	--warning-soft: light-dark(oklch(0.97 0.04 85), oklch(0.28 0.04 80));
+	--warning-border: light-dark(oklch(0.86 0.09 80), oklch(0.44 0.08 80));
+	--danger: light-dark(oklch(0.52 0.18 27), oklch(0.6 0.19 27));
+	--danger-hover: light-dark(oklch(0.46 0.18 27), oklch(0.54 0.18 27));
+	--danger-soft: light-dark(oklch(0.97 0.02 27), oklch(0.27 0.05 27));
+	--danger-border: light-dark(oklch(0.86 0.07 27), oklch(0.43 0.09 27));
+	--info: light-dark(oklch(0.5 0.12 240), oklch(0.78 0.1 240));
+	--info-soft: light-dark(oklch(0.97 0.02 240), oklch(0.27 0.04 240));
+	--info-border: light-dark(oklch(0.86 0.06 240), oklch(0.42 0.07 240));
 
 	/* Space: a 4px grid scaled by density */
 	--space-0: calc(2px * var(--brief-density));
@@ -134,13 +139,13 @@
 	--measure: 62ch;
 	--page-max: 1180px;
 
-	/* Elevation */
-	--shadow-1: 0 1px 2px oklch(0.2 0.02 var(--brief-neutral-hue) / 0.06);
-	--shadow-2: 0 1px 2px oklch(0.2 0.02 var(--brief-neutral-hue) / 0.06),
-		0 4px 12px oklch(0.2 0.02 var(--brief-neutral-hue) / 0.07);
-	--shadow-3: 0 2px 4px oklch(0.2 0.02 var(--brief-neutral-hue) / 0.06),
-		0 12px 32px oklch(0.2 0.02 var(--brief-neutral-hue) / 0.12);
-	--shadow-inset: inset 0 1px 2px oklch(0 0 0 / 0.03);
+	/* Elevation. Dark mode needs stronger shadows to read at all. */
+	--shadow-1: 0 1px 2px light-dark(oklch(0.2 0.02 var(--brief-neutral-hue) / 0.06), oklch(0 0 0 / 0.4));
+	--shadow-2: 0 1px 2px light-dark(oklch(0.2 0.02 var(--brief-neutral-hue) / 0.06), oklch(0 0 0 / 0.4)),
+		0 4px 12px light-dark(oklch(0.2 0.02 var(--brief-neutral-hue) / 0.07), oklch(0 0 0 / 0.35));
+	--shadow-3: 0 2px 4px light-dark(oklch(0.2 0.02 var(--brief-neutral-hue) / 0.06), oklch(0 0 0 / 0.4)),
+		0 12px 32px light-dark(oklch(0.2 0.02 var(--brief-neutral-hue) / 0.12), oklch(0 0 0 / 0.5));
+	--shadow-inset: inset 0 1px 2px light-dark(oklch(0 0 0 / 0.03), oklch(0 0 0 / 0.25));
 
 	/* Motion */
 	--duration-fast: 120ms;
@@ -148,6 +153,14 @@
 	--ease: cubic-bezier(0.2, 0, 0, 1);
 	--duration-spin: 700ms;
 }
+
+/*
+ * Theme. Color tokens use light-dark(), which follows color-scheme:
+ * the person's OS setting by default, or data-theme="light" / "dark" on <html> to force one.
+ */
+:root { color-scheme: light dark; }
+:root[data-theme='light'] { color-scheme: light; }
+:root[data-theme='dark'] { color-scheme: dark; }
 
 @media (prefers-reduced-motion: reduce) {
 	:root {
