@@ -1,0 +1,106 @@
+/*
+ * Typography: the text roles screens use. Tokens only.
+ * A role sets size, weight, line height and color together. The HTML element
+ * (h1, h2, p, span) comes from the document's structure, not from the look.
+ */
+
+.b-title,
+.b-heading,
+.b-subheading,
+.b-body,
+.b-small,
+.b-caption,
+.b-eyebrow {
+	margin: 0;
+}
+
+.b-title {
+	font-size: var(--text-xl);
+	font-weight: var(--weight-semibold);
+	line-height: var(--leading-tight);
+	letter-spacing: var(--tracking-tight);
+	color: var(--text);
+}
+
+.b-heading {
+	font-size: var(--text-lg);
+	font-weight: var(--weight-semibold);
+	line-height: var(--leading-tight);
+	letter-spacing: var(--tracking-tight);
+	color: var(--text);
+}
+
+.b-subheading {
+	font-size: var(--text-md);
+	font-weight: var(--weight-semibold);
+	line-height: var(--leading-snug);
+	color: var(--text);
+}
+
+.b-body {
+	font-size: var(--text-md);
+	font-weight: var(--weight-regular);
+	line-height: var(--leading-normal);
+	color: var(--text);
+	max-width: var(--measure);
+}
+
+.b-small {
+	font-size: var(--text-sm);
+	line-height: var(--leading-snug);
+	color: var(--text);
+}
+
+.b-caption {
+	font-size: var(--text-xs);
+	line-height: var(--leading-snug);
+	color: var(--text-muted);
+}
+
+.b-eyebrow {
+	font-size: var(--text-2xs);
+	font-weight: var(--weight-semibold);
+	line-height: var(--leading-tight);
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-caps);
+	color: var(--text-subtle);
+}
+
+/* Inline roles: used inside the roles above */
+
+.b-mono {
+	font-family: var(--font-mono);
+	font-size: 0.92em;
+}
+
+.b-code {
+	font-family: var(--font-mono);
+	font-size: 0.88em;
+	padding: 0 var(--space-1);
+	background: var(--surface-sunken);
+	border: var(--border-width) solid var(--border-subtle);
+	border-radius: var(--radius-sm);
+}
+
+.b-strong {
+	font-weight: var(--weight-semibold);
+}
+
+.b-numeric {
+	font-variant-numeric: tabular-nums;
+}
+
+/* Color: secondary and tertiary text */
+
+.b-muted { color: var(--text-muted); }
+.b-subtle { color: var(--text-subtle); }
+
+/* Spacing between roles in a block of text */
+
+.b-stack-text > * + * { margin-top: var(--space-2); }
+.b-stack-text > * + .b-heading,
+.b-stack-text > * + .b-subheading { margin-top: var(--space-6); }
+.b-stack-text > .b-eyebrow + * { margin-top: var(--space-1); }
+.b-stack-text > .b-heading + *,
+.b-stack-text > .b-subheading + * { margin-top: var(--space-1); }
+.b-stack-text > .b-body + .b-body { margin-top: var(--space-3); }

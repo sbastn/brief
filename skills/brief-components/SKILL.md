@@ -1,6 +1,6 @@
 ---
 name: brief-components
-description: Components of the Brief design system and the rules for using them. So far, the button and the link. Use when adding, styling or choosing a button or a link in a project that uses Brief.
+description: Components of the Brief design system and the rules for using them. So far, typography (text roles), the button and the link. Use when styling text, or adding or choosing a button or a link, in a project that uses Brief.
 ---
 
 # Brief components
@@ -10,12 +10,55 @@ Read `brief-foundations` first. Components are built from its tokens and follow 
 Each component has:
 
 - a section below: when to use it, its variants, sizes and states, and what not to do;
-- a stylesheet next to this file (`button.css`, `link.css`), written with tokens only;
+- a stylesheet next to this file (`typography.css`, `button.css`, `link.css`), written with tokens only;
 - a reference page in `reference/` that shows every variant, size and state.
 
 The class names in the stylesheets (`.b-button`, `.b-button--primary`) are one way to build the component. In React or another framework, keep the structure, the tokens and the rules, not necessarily the class names.
 
 If you can run a browser, render the reference page next to your result before you call it done.
+
+## Typography
+
+Text roles: each sets size, weight, line height and color together, from the foundation tokens. Use a role instead of setting font sizes yourself.
+
+Reference: `reference/typography.html`.
+
+### Roles
+
+| Role | Class | Use for |
+|---|---|---|
+| Title | `.b-title` | The page title. One per page. It names the object or the place: "Billing", "Your projects". |
+| Heading | `.b-heading` | A section of the page. |
+| Subheading | `.b-subheading` | A group inside a section, or a card title. |
+| Body | `.b-body` | Sentences people read. Stops at `--measure`. |
+| Small | `.b-small` | UI text next to controls: labels, table cells, menu items. |
+| Caption | `.b-caption` | Hints, timestamps, secondary facts. Muted. |
+| Eyebrow | `.b-eyebrow` | A short label above a title saying what kind of page or section it is: "Settings", "Invite your team". |
+
+Inline, inside any role:
+
+- `.b-mono` for values a person might copy: IDs, API keys, email addresses, file paths.
+- `.b-code` for commands and code the person would type.
+- `.b-strong` for the one phrase in a sentence that matters most. Not for whole sentences.
+- `.b-numeric` for numbers that line up in columns or change in place.
+
+Text color: `.b-muted` steps text back to supporting, `.b-subtle` to labels and metadata people scan past. Use the role's own color first.
+
+### Rules
+
+- **The element comes from structure, the role from the look.** A card title can be an `<h3>` with `.b-subheading`. Never pick a heading level for its size, and never skip levels to get a smaller one.
+- **One title per page**, and every section that has a heading uses the same role for it.
+- **Sentence case everywhere**, including titles, headings, buttons and eyebrows (the eyebrow is uppercase through CSS, not in the text).
+- **Body copy stops at `--measure`.** Long lines are why settings pages feel tiring.
+- **Don't invent sizes.** If no role fits, the text is probably doing two jobs; split it.
+- **Space between roles** comes from `.b-stack-text` on the container: tight under an eyebrow and a heading, wider before a new heading. Don't add margins to roles one by one.
+
+### Don't
+
+- Don't use bold body text as a heading. Use a heading role.
+- Don't use the eyebrow as a heading. It's a label; the heading still comes after it.
+- Don't put a caption's information in a tooltip. If it's worth saying, it's worth showing.
+- Don't make whole paragraphs muted to look calmer. Muted text is for what people can skip.
 
 ## Button
 
@@ -42,10 +85,10 @@ Buttons in the same row share a size.
 
 ### Labels
 
-- A verb, plus the object when it isn't obvious: "Save changes", "Add record", "Delete 3 records".
+- A verb, plus the object when it isn't obvious: "Save changes", "New project", "Delete 3 projects".
 - Sentence case. No trailing punctuation.
 - Never "Submit", "OK", "Yes" or "Click here". The label should still make sense on its own, read out by a screen reader.
-- The destructive confirmation repeats what will happen ("Delete 3 records"), not "Confirm".
+- The destructive confirmation repeats what will happen ("Delete 3 projects"), not "Confirm".
 
 ### Order
 
@@ -81,7 +124,7 @@ Reference: `reference/link.html`.
 |---|---|
 | Inline (`.b-link`) | A link inside a sentence. |
 | Muted (`--muted`) | A link inside secondary text: hints, footers, metadata lines. It takes the surrounding color. |
-| Standalone (`--standalone`) | A link on its own line, after a list or summary: "View all records →". |
+| Standalone (`--standalone`) | A link on its own line, after a list or summary: "View all invoices →". |
 | External (`--external`) | A link to another site. Combine it with the others: `b-link b-link--external`. |
 
 ### Rules

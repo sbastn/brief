@@ -49,6 +49,7 @@ Scale tokens (`--gray-*`, `--brand-*`) exist to build the semantic tokens above.
 - Sizes: `--text-2xs` … `--text-2xl`, all derived from the base size knob. Weights: `--weight-regular`, `--weight-medium`, `--weight-semibold`.
 - Line heights: `--leading-tight` for headings, `--leading-snug` for compact UI text, `--leading-normal` for body copy.
 - Body copy stops at `--measure`.
+- Screens don't set sizes from these tokens directly; they use the text roles in `brief-components` (title, heading, body, caption…).
 
 ## Density
 
