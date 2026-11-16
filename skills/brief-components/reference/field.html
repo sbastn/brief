@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Field · Brief reference</title>
+	<link rel="stylesheet" href="../../brief-foundations/tokens.css">
+	<link rel="stylesheet" href="../../brief-foundations/configs/default.css">
+	<link rel="stylesheet" href="../typography.css">
+	<link rel="stylesheet" href="../field.css">
+	<link rel="stylesheet" href="../button.css">
+	<link rel="stylesheet" href="../link.css">
+	<link rel="stylesheet" href="reference.css">
+	<script src="reference.js"></script>
+</head>
+<body>
+	<main class="ref">
+		<div class="ref-bar">
+			<a class="b-link b-link--standalone ref-back" href="index.html">← All components</a>
+			<button class="b-button b-button--ghost b-button--sm" type="button" data-theme-toggle>Theme: System</button>
+		</div>
+		<header class="ref-intro">
+			<h1>Field and text input</h1>
+			<p>A field is a label, an optional hint, an error when there is one, and the control. Hint and error come before the control, so they're read before typing and never hidden by autofill or a phone keyboard. Rules are in <code>brief-components/SKILL.md</code>.</p>
+		</header>
+
+		<section class="ref-section" aria-labelledby="anatomy">
+			<div>
+				<h2 id="anatomy">Anatomy</h2>
+				<p>Label, hint, error, control. Only the label and the control are always there.</p>
+			</div>
+			<div class="ref-panel ref-fields">
+					<div>
+					<div class="b-field">
+						<label class="b-label" for="a1">Workspace name</label>
+						<p class="b-hint" id="a1-hint">Shown to everyone you invite. You can change it later.</p>
+						<input class="b-input" id="a1" value="Acme" aria-describedby="a1-hint" type="text">
+					</div>
+					</div>
+					<div>
+					<div class="b-field">
+						<label class="b-label" for="a2">Workspace URL</label>
+						<p class="b-hint" id="a2-hint">Lowercase letters, numbers and hyphens.</p>
+						<p class="b-error" id="a2-error">Use only lowercase letters, numbers and hyphens, like acme-design</p>
+						<input class="b-input b-input--mono" id="a2" value="Acme Design" aria-describedby="a2-hint a2-error" aria-invalid="true" type="text">
+					</div>
+					</div>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="states">
+			<div>
+				<h2 id="states">States</h2>
+				<p>Hover and focus are forced here with <code>data-state</code>. Read-only is for values people need to see or copy but can't change.</p>
+			</div>
+			<div class="ref-panel ref-fields">
+					<div>
+						<p class="ref-field-label">Rest</p>
+					<div class="b-field">
+						<label class="b-label" for="s1">Project name</label>
+						<input class="b-input" id="s1" type="text">
+					</div>
+					</div>
+					<div>
+						<p class="ref-field-label">Hover</p>
+					<div class="b-field">
+						<label class="b-label" for="s2">Project name</label>
+						<input class="b-input" id="s2" type="text" data-state="hover">
+					</div>
+					</div>
+					<div>
+						<p class="ref-field-label">Focus</p>
+					<div class="b-field">
+						<label class="b-label" for="s3">Project name</label>
+						<input class="b-input" id="s3" type="text" data-state="focus">
+					</div>
+					</div>
+					<div>
+						<p class="ref-field-label">Filled</p>
+					<div class="b-field">
+						<label class="b-label" for="s4">Project name</label>
+						<input class="b-input" id="s4" value="Spring launch" type="text">
+					</div>
+					</div>
+					<div>
+						<p class="ref-field-label">Invalid</p>
+					<div class="b-field">
+						<label class="b-label" for="s5">Project name</label>
+						<p class="b-error" id="s5-error">Enter a project name</p>
+						<input class="b-input" id="s5" aria-describedby="s5-error" aria-invalid="true" type="text">
+					</div>
+					</div>
+					<div>
+						<p class="ref-field-label">Disabled</p>
+					<div class="b-field">
+						<label class="b-label" for="s6">Project name</label>
+						<input class="b-input" id="s6" value="Spring launch" type="text" disabled>
+					</div>
+					</div>
+					<div>
+						<p class="ref-field-label">Read-only</p>
+					<div class="b-field">
+						<label class="b-label" for="s7">Project ID</label>
+						<p class="b-hint" id="s7-hint">Use this ID in API requests.</p>
+						<input class="b-input b-input--mono" id="s7" value="prj_7Hq2xL9" aria-describedby="s7-hint" type="text" readonly>
+					</div>
+					</div>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="sizes">
+			<div>
+				<h2 id="sizes">Sizes</h2>
+				<p>Medium by default. Small in toolbars and filters, next to small buttons. Large for the one input a page is about.</p>
+			</div>
+			<div class="ref-panel ref-fields">
+					<div>
+						<p class="ref-field-label">Small</p>
+					<div class="b-field">
+						<label class="b-label" for="z1">Search</label>
+						<input class="b-input b-input--sm" id="z1" type="search" placeholder="Search projects">
+					</div>
+					</div>
+					<div>
+						<p class="ref-field-label">Medium</p>
+					<div class="b-field">
+						<label class="b-label" for="z2">Project name</label>
+						<input class="b-input" id="z2" type="text">
+					</div>
+					</div>
+					<div>
+						<p class="ref-field-label">Large</p>
+					<div class="b-field">
+						<label class="b-label" for="z3">Workspace name</label>
+						<input class="b-input b-input--lg" id="z3" value="Acme" type="text">
+					</div>
+					</div>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="widths">
+			<div>
+				<h2 id="widths">Width</h2>
+				<p>An input's width hints at the answer. A six-digit code gets a short input; an email address gets the full width.</p>
+			</div>
+			<div class="ref-panel ref-stack">
+					<div>
+					<div class="b-field">
+						<label class="b-label" for="w1">Verification code</label>
+						<p class="b-hint" id="w1-hint">6 digits, from the email we sent.</p>
+						<input class="b-input b-input--short b-input--mono" id="w1" aria-describedby="w1-hint" type="text" inputmode="numeric" autocomplete="one-time-code">
+					</div>
+					</div>
+					<div>
+					<div class="b-field">
+						<label class="b-label" for="w2">Postcode</label>
+						<input class="b-input b-input--medium" id="w2" type="text" autocomplete="postal-code">
+					</div>
+					</div>
+					<div>
+					<div class="b-field">
+						<label class="b-label" for="w3">Email address</label>
+						<input class="b-input" id="w3" type="email" autocomplete="email">
+					</div>
+					</div>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="form">
+			<div>
+				<h2 id="form">In a form</h2>
+				<p>After a failed submit: the error says what's wrong and how to fix it. Optional fields are marked; required ones aren't.</p>
+			</div>
+			<div class="ref-panel">
+				<form class="b-form" onsubmit="return false">
+					<div class="b-stack-text">
+						<h3 class="b-heading">Invite your team</h3>
+						<p class="b-small b-muted">They'll get an email with a link to join this workspace.</p>
+					</div>
+					<div>
+					<div class="b-field">
+						<label class="b-label" for="f1">Email addresses</label>
+						<p class="b-hint" id="f1-hint">Separate addresses with commas.</p>
+						<p class="b-error" id="f1-error">“alex@example” is missing its ending, like alex@example.com</p>
+						<input class="b-input" id="f1" value="alex@example, sam@example.com" aria-describedby="f1-hint f1-error" aria-invalid="true" type="text" autocomplete="off">
+					</div>
+					</div>
+					<div>
+					<div class="b-field">
+						<label class="b-label" for="f2">Message <span class="b-label__optional">(optional)</span></label>
+						<p class="b-hint" id="f2-hint">We'll add it to the invite email.</p>
+						<textarea class="b-input" id="f2" aria-describedby="f2-hint"></textarea>
+					</div>
+					</div>
+					<div class="b-form__actions">
+						<button class="b-button" type="button">Cancel</button>
+						<button class="b-button b-button--primary" type="submit">Send invites</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

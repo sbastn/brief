@@ -1,6 +1,6 @@
 ---
 name: brief-components
-description: Components of the Brief design system and the rules for using them. So far, typography (text roles), the button and the link. Use when styling text, or adding or choosing a button or a link, in a project that uses Brief.
+description: Components of the Brief design system and the rules for using them. So far, typography (text roles), the button, the link, and the field with its text input. Use when styling text, or adding a button, a link, a form field or a text input, in a project that uses Brief.
 ---
 
 # Brief components
@@ -10,7 +10,7 @@ Read `brief-foundations` first. Components are built from its tokens and follow 
 Each component has:
 
 - a section below: when to use it, its variants, sizes and states, and what not to do;
-- a stylesheet next to this file (`typography.css`, `button.css`, `link.css`), written with tokens only;
+- a stylesheet next to this file (`typography.css`, `button.css`, `link.css`, `field.css`), written with tokens only;
 - a reference page in `reference/` that shows every variant, size and state.
 
 `reference/index.html` lists every component, with a preview and a link to its page.
@@ -152,3 +152,53 @@ Hover darkens the color and strengthens the underline. Pressed darkens it furthe
 
 - Use `<a href>`. A link without a real destination is a button.
 - `[data-state]` in `link.css` only exists so reference pages can show states in a static render. Never set it in a product.
+
+## Field and text input
+
+A field is a label, an optional hint, an error when there is one, and the control, in that order. The text input (`.b-input`) is the first control; `<textarea class="b-input">` is the same control for longer text.
+
+Reference: `reference/field.html`.
+
+### Anatomy
+
+1. **Label** (`.b-label`): always visible, above the control. Sentence case, no colon.
+2. **Hint** (`.b-hint`): what to enter or why it's asked, when that isn't obvious. One sentence.
+3. **Error** (`.b-error`): only after validation fails. It has its own mark, so it doesn't rely on red alone.
+4. **Control** (`.b-input`).
+
+Hint and error go **before** the control. They're read before typing, and autofill menus and phone keyboards can't cover them.
+
+### Sizes and width
+
+- **Medium** by default. **Small** (`--sm`) in toolbars and filters, next to small buttons. **Large** (`--lg`) for the one input a page is about.
+- **Width hints at the answer.** Short (`--short`) for codes and numbers, medium (`--medium`) for postcodes and short names, full width for names, emails and anything open-ended.
+- **Mono** (`--mono`) for values typed or copied exactly: codes, keys, IDs, URLs.
+
+### Rules
+
+- **Never use a placeholder as a label.** It disappears as soon as someone types. Use placeholders only for a format example, and only when the hint can't carry it.
+- **Mark the optional fields, not the required ones:** "Message (optional)". Ask for less; if most fields are optional, the form is asking for too much.
+- **Validate on submit,** then again as each invalid field changes. Never on every keystroke of a first attempt.
+- **Error messages say what's wrong and how to fix it,** using the person's own input when it helps: "“alex@example” is missing its ending, like alex@example.com". Never "Invalid input".
+- **Use the right input type** (`email`, `url`, `tel`, `search`), `autocomplete` and `inputmode`, so phones show the right keyboard and browsers can autofill.
+- **Read-only, not disabled,** for values people need to see or copy but can't change. Disabled inputs can't be focused or copied, and they're hard to read.
+- **Forms are one column** (`.b-form`, up to `--measure` wide), with actions at the end, primary last.
+
+### States
+
+Rest, hover, focus, filled, invalid (`aria-invalid="true"`), disabled and read-only all come from the stylesheet. Never remove the focus ring.
+
+### Don't
+
+- Don't put the label inside the input or beside it in a narrow column.
+- Don't show an error before the person has tried to submit.
+- Don't clear what they typed when validation fails.
+- Don't split one answer across several inputs (a date in three boxes, a code in six) unless the platform needs it.
+
+### Building it
+
+- Connect the label with `<label for>` and the control's `id`.
+- Point `aria-describedby` at the hint and the error, in that order, so screen readers read them after the label.
+- Set `aria-invalid="true"` on the control while its error shows.
+- `[data-state]` in `field.css` only exists so reference pages can show states in a static render. Never set it in a product.
+
