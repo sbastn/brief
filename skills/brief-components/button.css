@@ -1,0 +1,139 @@
+/*
+ * Button. Tokens only.
+ *
+ * Each variant sets the private --_* properties; the base rule and the states read them.
+ * [data-state] forces a state so a static render (a screenshot, an agent without a mouse)
+ * can show hover, active and focus. Real pages never set it.
+ */
+
+.b-button {
+	--_fg: var(--text);
+	--_bg: var(--surface);
+	--_border: var(--border);
+	--_bg-hover: var(--surface-hover);
+	--_border-hover: var(--border-strong);
+	--_bg-active: var(--surface-sunken);
+	--_shadow: var(--shadow-1);
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-2);
+	height: var(--control-md);
+	padding: 0 var(--space-4);
+	position: relative;
+
+	font: inherit;
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
+	line-height: 1;
+	white-space: nowrap;
+	text-decoration: none;
+
+	color: var(--_fg);
+	background: var(--_bg);
+	border: var(--border-width) solid var(--_border);
+	border-radius: var(--radius-md);
+	box-shadow: var(--_shadow);
+	cursor: pointer;
+	transition:
+		background var(--duration-fast) var(--ease),
+		border-color var(--duration-fast) var(--ease);
+}
+
+.b-button:hover,
+.b-button[data-state='hover'] {
+	background: var(--_bg-hover);
+	border-color: var(--_border-hover);
+	color: var(--_fg);
+}
+
+.b-button:active,
+.b-button[data-state='active'] {
+	background: var(--_bg-active);
+}
+
+.b-button:focus-visible,
+.b-button[data-state='focus'] {
+	outline: none;
+	box-shadow: var(--_shadow), 0 0 0 var(--focus-width) var(--focus-ring);
+}
+
+.b-button:disabled,
+.b-button[aria-disabled='true'] {
+	opacity: 0.5;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+/* Variants */
+
+.b-button--primary {
+	--_fg: var(--text-on-accent);
+	--_bg: var(--accent);
+	--_border: var(--accent);
+	--_bg-hover: var(--accent-hover);
+	--_border-hover: var(--accent-hover);
+	--_bg-active: var(--accent-pressed);
+}
+
+.b-button--ghost {
+	--_fg: var(--text-muted);
+	--_bg: transparent;
+	--_border: transparent;
+	--_border-hover: transparent;
+	--_shadow: none;
+}
+.b-button--ghost:hover,
+.b-button--ghost[data-state='hover'] {
+	color: var(--text);
+}
+
+.b-button--danger {
+	--_fg: var(--text-on-accent);
+	--_bg: var(--danger);
+	--_border: var(--danger);
+	--_bg-hover: var(--danger-hover);
+	--_border-hover: var(--danger-hover);
+	--_bg-active: var(--danger-hover);
+}
+
+/* Sizes */
+
+.b-button--sm {
+	height: var(--control-sm);
+	padding: 0 var(--space-3);
+	font-size: var(--text-xs);
+	gap: var(--space-1);
+}
+
+.b-button--lg {
+	height: var(--control-lg);
+	padding: 0 var(--space-5);
+	font-size: var(--text-md);
+}
+
+/* Busy: the label stays in the layout (so the width holds) but is hidden behind a spinner */
+
+.b-button[aria-busy='true'] {
+	color: transparent;
+	pointer-events: none;
+}
+.b-button[aria-busy='true']::after {
+	content: '';
+	position: absolute;
+	width: 1em;
+	height: 1em;
+	border: var(--border-width-strong) solid var(--_fg);
+	border-right-color: transparent;
+	border-radius: var(--radius-full);
+	animation: b-button-spin var(--duration-spin) linear infinite;
+}
+
+@keyframes b-button-spin {
+	to { transform: rotate(1turn); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.b-button[aria-busy='true']::after { animation: none; }
+}

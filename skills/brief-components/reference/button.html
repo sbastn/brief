@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Button · Brief reference</title>
+	<link rel="stylesheet" href="../../brief-foundations/tokens.css">
+	<link rel="stylesheet" href="../../brief-foundations/configs/default.css">
+	<link rel="stylesheet" href="../button.css">
+	<link rel="stylesheet" href="reference.css">
+</head>
+<body>
+	<main class="ref">
+		<header class="ref-intro">
+			<h1>Button</h1>
+			<p>A button does something on this page. Rules are in <code>brief-components/SKILL.md</code>; this page shows the result.</p>
+		</header>
+
+		<section class="ref-section" aria-labelledby="variants">
+			<div>
+				<h2 id="variants">Variants</h2>
+				<p>One primary per view. Default for everything else, ghost for low-emphasis actions, danger only to confirm something destructive.</p>
+			</div>
+			<div class="ref-panel ref-row">
+				<button class="b-button" type="button">Cancel</button>
+				<button class="b-button b-button--primary" type="button">Save changes</button>
+				<button class="b-button b-button--ghost" type="button">Clear</button>
+				<button class="b-button b-button--danger" type="button">Delete record</button>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="states">
+			<div>
+				<h2 id="states">States</h2>
+				<p>Hover, pressed and focus are forced here with <code>data-state</code> so a static render shows them. Busy keeps the button's width.</p>
+			</div>
+			<div class="ref-panel">
+				<table class="ref-matrix">
+					<thead><tr><th></th><th scope="col">Rest</th><th scope="col">Hover</th><th scope="col">Pressed</th><th scope="col">Focus</th><th scope="col">Disabled</th><th scope="col">Busy</th></tr></thead>
+					<tbody>
+						<tr><th scope="row">Default</th><td><button class="b-button" type="button">Cancel</button></td><td><button class="b-button" type="button" data-state="hover">Cancel</button></td><td><button class="b-button" type="button" data-state="active">Cancel</button></td><td><button class="b-button" type="button" data-state="focus">Cancel</button></td><td><button class="b-button" type="button" disabled>Cancel</button></td><td><button class="b-button" type="button" aria-busy="true">Cancel</button></td></tr>
+						<tr><th scope="row">Primary</th><td><button class="b-button b-button--primary" type="button">Save changes</button></td><td><button class="b-button b-button--primary" type="button" data-state="hover">Save changes</button></td><td><button class="b-button b-button--primary" type="button" data-state="active">Save changes</button></td><td><button class="b-button b-button--primary" type="button" data-state="focus">Save changes</button></td><td><button class="b-button b-button--primary" type="button" disabled>Save changes</button></td><td><button class="b-button b-button--primary" type="button" aria-busy="true">Save changes</button></td></tr>
+						<tr><th scope="row">Ghost</th><td><button class="b-button b-button--ghost" type="button">Clear</button></td><td><button class="b-button b-button--ghost" type="button" data-state="hover">Clear</button></td><td><button class="b-button b-button--ghost" type="button" data-state="active">Clear</button></td><td><button class="b-button b-button--ghost" type="button" data-state="focus">Clear</button></td><td><button class="b-button b-button--ghost" type="button" disabled>Clear</button></td><td><button class="b-button b-button--ghost" type="button" aria-busy="true">Clear</button></td></tr>
+						<tr><th scope="row">Danger</th><td><button class="b-button b-button--danger" type="button">Delete record</button></td><td><button class="b-button b-button--danger" type="button" data-state="hover">Delete record</button></td><td><button class="b-button b-button--danger" type="button" data-state="active">Delete record</button></td><td><button class="b-button b-button--danger" type="button" data-state="focus">Delete record</button></td><td><button class="b-button b-button--danger" type="button" disabled>Delete record</button></td><td><button class="b-button b-button--danger" type="button" aria-busy="true">Delete record</button></td></tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="sizes">
+			<div>
+				<h2 id="sizes">Sizes</h2>
+				<p>Medium by default. Small in toolbars and dense rows. Large at most once per page, for the one action a first-time visitor came for.</p>
+			</div>
+			<div class="ref-panel ref-row">
+				<button class="b-button b-button--primary b-button--sm" type="button">Save changes</button>
+				<button class="b-button b-button--primary" type="button">Save changes</button>
+				<button class="b-button b-button--primary b-button--lg" type="button">Save changes</button>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="context">
+			<div>
+				<h2 id="context">In context</h2>
+				<p>The primary goes last in a row. Labels say what will happen, with the object when it isn't obvious.</p>
+			</div>
+			<div class="ref-panel ref-example">
+				<span class="ref-label">Confirming a destructive action</span>
+				<p>Delete 3 records? This can't be undone.</p>
+				<div class="ref-footer">
+					<button class="b-button" type="button">Cancel</button>
+					<button class="b-button b-button--danger" type="button">Delete 3 records</button>
+				</div>
+			</div>
+			<div class="ref-panel ref-example">
+				<span class="ref-label">A toolbar</span>
+				<div class="ref-toolbar">
+					<button class="b-button b-button--ghost b-button--sm" type="button">Select all</button>
+					<button class="b-button b-button--ghost b-button--sm" type="button">Export</button>
+					<span class="ref-spacer"></span>
+					<button class="b-button b-button--primary b-button--sm" type="button">Add record</button>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

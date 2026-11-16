@@ -2,11 +2,12 @@
 
 This repo is a design system written as agent skills. The skills are in `skills/`, one folder per skill, in the open `SKILL.md` format.
 
-Building UI with Brief: read `skills/brief-foundations/SKILL.md` first, and use tokens only.
+Building UI with Brief: read `skills/brief-foundations/SKILL.md` first, then `skills/brief-components/SKILL.md` for the components you use. Use tokens only.
 
 Changing Brief:
 
-- Rules go in `SKILL.md` and values go in `tokens.css`. Change both together.
+- Rules go in `SKILL.md`, values go in `tokens.css`, and a component's reference page shows the result. Change them together.
+- Run `npm run check` after changing any CSS. It fails on raw colors, lengths and durations outside `tokens.css` and the configs.
 - A config file only sets `--brief-*` knobs. If a config needs more than knobs, the system is missing a knob.
 
 ## Agent skills

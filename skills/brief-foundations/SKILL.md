@@ -39,7 +39,7 @@ Allowed exceptions: `0`, percentages, unitless line heights and flex values, and
 | Control height | `--control-sm`, `--control-md` (default), `--control-lg` |
 | Corners | `--radius-sm`, `--radius-md`, `--radius-lg`, `--radius-full` |
 | Elevation | `--shadow-1` (resting), `--shadow-2` (the main surface on a page), `--shadow-3` (floating), `--shadow-inset` (inside inputs) |
-| Motion | `--duration-fast`, `--duration-normal`, `--ease` |
+| Motion | `--duration-fast`, `--duration-normal`, `--duration-spin`, `--ease` |
 
 Scale tokens (`--gray-*`, `--brand-*`) exist to build the semantic tokens above. Screens use semantic tokens.
 
@@ -56,7 +56,7 @@ Scale tokens (`--gray-*`, `--brand-*`) exist to build the semantic tokens above.
 
 ## Motion
 
-Use `--duration-fast` for hover and press feedback and `--duration-normal` for things that appear or move, both with `--ease`. Both durations drop to zero under `prefers-reduced-motion`, so use the tokens and that preference is respected for free.
+Use `--duration-fast` for hover and press feedback and `--duration-normal` for things that appear or move, both with `--ease`. `--duration-spin` is one turn of a loading spinner. `--duration-fast` and `--duration-normal` drop to zero under `prefers-reduced-motion`, so using the tokens respects that preference for free. Stop spinners yourself under the same preference.
 
 ## Files
 

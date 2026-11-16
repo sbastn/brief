@@ -146,6 +146,7 @@
 	--duration-fast: 120ms;
 	--duration-normal: 200ms;
 	--ease: cubic-bezier(0.2, 0, 0, 1);
+	--duration-spin: 700ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
