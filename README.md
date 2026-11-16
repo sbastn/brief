@@ -16,7 +16,7 @@ So far Brief has its foundations (the tokens every value comes from, and the rul
 - **Knobs** (`--brief-*`): a few values a project sets in one config file: brand hue, neutrals, radius, density, type size and fonts.
 - **Tokens** (`tokens.css`): every color, length, radius, shadow and duration, derived from the knobs.
 - **Rules** (`SKILL.md`): which token to use for what, and when to use each component, written for an agent to follow.
-- **References** (`reference/*.html`): working HTML + CSS showing every variant and state. Open them in a browser.
+- **References** (`reference/*.html`): working HTML + CSS showing every variant and state. Open `skills/brief-components/reference/index.html` in a browser to see them all.
 
 Brief has no brand of its own beyond its default config (`skills/brief-foundations/configs/default.css`). Products built with Brief bring their own config.
 

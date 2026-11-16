@@ -7,6 +7,7 @@ Building UI with Brief: read `skills/brief-foundations/SKILL.md` first, then `sk
 Changing Brief:
 
 - Rules go in `SKILL.md`, values go in `tokens.css`, and a component's reference page shows the result. Change them together.
+- A new component also gets a card in `skills/brief-components/reference/index.html`.
 - Run `npm run check` after changing any CSS. It fails on raw colors, lengths and durations outside `tokens.css` and the configs.
 - A config file only sets `--brief-*` knobs. If a config needs more than knobs, the system is missing a knob.
 

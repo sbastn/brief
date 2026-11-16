@@ -13,6 +13,8 @@ Each component has:
 - a stylesheet next to this file (`typography.css`, `button.css`, `link.css`), written with tokens only;
 - a reference page in `reference/` that shows every variant, size and state.
 
+`reference/index.html` lists every component, with a preview and a link to its page.
+
 The class names in the stylesheets (`.b-button`, `.b-button--primary`) are one way to build the component. In React or another framework, keep the structure, the tokens and the rules, not necessarily the class names.
 
 If you can run a browser, render the reference page next to your result before you call it done.
