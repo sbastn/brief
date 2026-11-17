@@ -26,8 +26,14 @@ Brief has no brand of its own beyond its default config (`skills/brief-foundatio
 npm run check
 ```
 
-Fails if any CSS outside `tokens.css` and the configs holds a raw color, length or duration.
+Fails if any CSS outside `tokens.css` and the configs holds a raw color, length or duration. The check ships with the skill (`skills/brief-foundations/scripts/check.mjs`), so projects that use Brief run it too.
 
 ## Using the skills in another project
 
-Copy `skills/*` into `.claude/skills/` (Claude Code), `.codex/skills/` (Codex) or `.cursor/skills/` (Cursor). Then add a config file that sets the `--brief-*` knobs, starting from `configs/default.css`.
+1. Copy `skills/*` into `.claude/skills/` (Claude Code and Cursor) or `.agents/skills/` (Codex).
+2. Add a config file that sets the `--brief-*` knobs, starting from `configs/default.css`.
+3. Tell agents about Brief in the project's `AGENTS.md` or `CLAUDE.md`:
+
+```markdown
+This project uses the Brief design system. Its skills are in `.claude/skills/`: read `brief-foundations` first, then `brief-components`. The brand config is `src/brief.config.css`. Before you finish, run `node .claude/skills/brief-foundations/scripts/check.mjs src` and fix what it reports.
+```
