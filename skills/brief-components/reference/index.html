@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Components · Brief reference</title>
+	<title>Brief reference</title>
 	<link rel="stylesheet" href="../../brief-foundations/tokens.css">
 	<link rel="stylesheet" href="../../brief-foundations/configs/default.css">
 	<link rel="stylesheet" href="../typography.css">
@@ -21,10 +21,36 @@
 			<button class="b-button b-button--ghost b-button--sm" type="button" data-theme-toggle>Theme: System</button>
 		</div>
 		<header class="ref-intro">
-			<h1>Components</h1>
-			<p>Every Brief component so far. Each page shows its variants, sizes and states; the rules are in <code>brief-components/SKILL.md</code>.</p>
+			<h1>Brief reference</h1>
+			<p>Every part of Brief so far. Each page shows the result; the rules are in each skill's <code>SKILL.md</code>.</p>
 		</header>
 
+		<section class="ref-section" aria-labelledby="foundations">
+			<div>
+				<h2 id="foundations">Foundations</h2>
+				<p>The tokens every value comes from, and the rules for using them. Rules are in <code>brief-foundations/SKILL.md</code>.</p>
+			</div>
+			<ul class="ref-cards">
+				<li class="ref-card">
+					<div class="ref-card__preview" aria-hidden="true">
+						<div class="ref-preview-layout">
+							<span class="ref-preview-layout__side"></span>
+							<span class="ref-preview-layout__main"><span></span><span></span><span></span></span>
+						</div>
+					</div>
+					<div class="ref-card__body">
+						<h3 class="b-subheading"><a class="b-link" href="../../brief-foundations/reference/layout.html">Layout</a></h3>
+						<p class="b-small b-muted">Page, column and sidebar widths, and why they don't follow density.</p>
+					</div>
+				</li>
+			</ul>
+		</section>
+
+		<section class="ref-section" aria-labelledby="components">
+			<div>
+				<h2 id="components">Components</h2>
+				<p>Each page shows a component's variants, sizes and states. Rules are in <code>brief-components/SKILL.md</code>.</p>
+			</div>
 		<ul class="ref-cards">
 			<li class="ref-card">
 				<div class="ref-card__preview" aria-hidden="true">
@@ -35,7 +61,7 @@
 					</div>
 				</div>
 				<div class="ref-card__body">
-					<h2 class="b-subheading"><a class="b-link" href="typography.html">Typography</a></h2>
+					<h3 class="b-subheading"><a class="b-link" href="typography.html">Typography</a></h3>
 					<p class="b-small b-muted">Seven text roles, plus mono, code and text colors.</p>
 				</div>
 			</li>
@@ -45,7 +71,7 @@
 					<span class="b-button b-button--primary">Save changes</span>
 				</div>
 				<div class="ref-card__body">
-					<h2 class="b-subheading"><a class="b-link" href="button.html">Button</a></h2>
+					<h3 class="b-subheading"><a class="b-link" href="button.html">Button</a></h3>
 					<p class="b-small b-muted">Primary, default, ghost and danger, in three sizes and six states.</p>
 				</div>
 			</li>
@@ -54,7 +80,7 @@
 					<span class="b-small">Read the <span class="b-link">API reference</span> first.</span>
 				</div>
 				<div class="ref-card__body">
-					<h2 class="b-subheading"><a class="b-link" href="link.html">Link</a></h2>
+					<h3 class="b-subheading"><a class="b-link" href="link.html">Link</a></h3>
 					<p class="b-small b-muted">Inline, muted, standalone and external links.</p>
 				</div>
 			</li>
@@ -66,7 +92,7 @@
 					</div>
 				</div>
 				<div class="ref-card__body">
-					<h2 class="b-subheading"><a class="b-link" href="field.html">Field and text input</a></h2>
+					<h3 class="b-subheading"><a class="b-link" href="field.html">Field and text input</a></h3>
 					<p class="b-small b-muted">Label, hint, error and the text input, in three sizes and seven states.</p>
 				</div>
 			</li>
@@ -78,7 +104,7 @@
 					</div>
 				</div>
 				<div class="ref-card__body">
-					<h2 class="b-subheading"><a class="b-link" href="choice.html">Checkbox and radio</a></h2>
+					<h3 class="b-subheading"><a class="b-link" href="choice.html">Checkbox and radio</a></h3>
 					<p class="b-small b-muted">Single checkboxes, groups, radios and cards, in eight states.</p>
 				</div>
 			</li>
@@ -93,11 +119,12 @@
 					</table>
 				</div>
 				<div class="ref-card__body">
-					<h2 class="b-subheading"><a class="b-link" href="table.html">Table</a></h2>
+					<h3 class="b-subheading"><a class="b-link" href="table.html">Table</a></h3>
 					<p class="b-small b-muted">Row headers, numbers, selection, sorting, compact and empty tables.</p>
 				</div>
 			</li>
 		</ul>
+		</section>
 	</main>
 </body>
 </html>

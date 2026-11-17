@@ -17,6 +17,8 @@ const rules = [
 	['color', /#[0-9a-f]{3,8}\b|\b(?:rgba?|hsla?|oklch|oklab|lab|lch|color)\(|(?<![\w-])(?:white|black)(?![\w-])/gi],
 	['length', /(?<![\w.#-])-?\d*\.?\d+(?:px|rem|vh|vw|pt)\b/g],
 	['duration', /(?<![\w.#-])\d*\.?\d+m?s\b/g],
+	// Widths and heights come from layout tokens. Space scales with density; a page width shouldn't.
+	['layout', /(?<![\w-])(?:max-|min-)?(?:width|height|inline-size|block-size)\s*:[^;{}]*?(?:var\(--space-[\w-]+\)\s*\*|\*\s*var\(--space-[\w-]+\))/gi],
 ];
 
 const stripComments = (text) => text.replace(/\/\*[\s\S]*?\*\//g, (c) => c.replace(/[^\n]/g, ' '));
@@ -69,7 +71,8 @@ for (const file of files) {
 				for (const m of line.matchAll(re)) {
 					const start = Math.max(0, m.index - 30);
 					const context = raw.slice(start, m.index + m[0].length + 30).trim();
-					problems.push(`${relative(process.cwd(), file)}:${first + i}  raw ${kind} "${m[0]}"  ${context}`);
+					const what = kind === 'layout' ? 'size built from space tokens' : `raw ${kind} "${m[0]}"`;
+					problems.push(`${relative(process.cwd(), file)}:${first + i}  ${what}  ${context}`);
 				}
 			}
 		});
@@ -77,7 +80,7 @@ for (const file of files) {
 }
 
 if (problems.length) {
-	console.error(`${problems.length} raw value(s). Use a token from brief-foundations/tokens.css:\n`);
+	console.error(`${problems.length} problem(s). Use a token from brief-foundations/tokens.css; widths come from --page-max, --measure and --sidebar-width:\n`);
 	console.error(problems.join('\n'));
 	process.exit(1);
 }

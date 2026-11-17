@@ -32,7 +32,7 @@ Never write a hex, `rgb()`, `oklch()`, `px`, `rem` or `ms` value in a screen's s
 
 Why: a config change has to reach every screen. A raw value is a part of a screen that stops following the system.
 
-Allowed exceptions: `0`, percentages, unitless line heights and flex values, and media-query breakpoints (CSS can't read custom properties there).
+Allowed exceptions: `0`, percentages, `fr`, unitless line heights and flex values, `100dvh` to fill the window, and media-query breakpoints (CSS can't read custom properties there).
 
 ## Tokens to reach for
 
@@ -48,6 +48,7 @@ Allowed exceptions: `0`, percentages, unitless line heights and flex values, and
 | Focus | `--focus-ring`, `--focus-width` |
 | Space | `--space-0` … `--space-16` (a 4px grid scaled by density) |
 | Control height | `--control-sm`, `--control-md` (default), `--control-lg` |
+| Widths | `--page-max` (page content), `--measure` (a column of text or a form), `--sidebar-width` (a side column) |
 | Corners | `--radius-sm`, `--radius-md`, `--radius-lg`, `--radius-full` |
 | Elevation | `--shadow-1` (resting), `--shadow-2` (the main surface on a page), `--shadow-3` (floating), `--shadow-inset` (inside inputs) |
 | Motion | `--duration-fast`, `--duration-normal`, `--duration-spin`, `--ease` |
@@ -79,6 +80,20 @@ Because screens only use tokens, they get dark mode for free. Rules:
 
 `--brief-density` scales space and control heights together. 1 is the default, about 0.85 is compact, about 1.15 is roomy. Set it once in the config for the whole product. Don't fake density per screen with different space tokens.
 
+## Layout
+
+Space tokens are for gaps and padding. Widths come from the layout tokens:
+
+- `--page-max`: the widest the page's content gets. Center it; the page background fills the rest of the window.
+- `--measure`: the widest a column of text or a form gets.
+- `--sidebar-width`: a column beside the main content, such as navigation or a list of steps.
+
+Anything narrower is a fraction of these (`calc(var(--measure) / 2)`), a percentage, or a grid track (`fr`, `minmax()`).
+
+- **Never build a width or height by multiplying space tokens** (`calc(var(--space-16) * 12)`). Space scales with density, and a page shouldn't get narrower because a product is compact. The check rejects it.
+- **Don't fix the height of a page region.** Content and padding set heights. A page that fills the window uses `min-height: 100dvh` on its outermost element.
+- If a layout needs a width these don't give, build it from them and name it in your summary under "Missing from Brief".
+
 ## Motion
 
 Use `--duration-fast` for hover and press feedback and `--duration-normal` for things that appear or move, both with `--ease`. `--duration-spin` is one turn of a loading spinner. `--duration-fast` and `--duration-normal` drop to zero under `prefers-reduced-motion`, so using the tokens respects that preference for free. Stop spinners yourself under the same preference.
@@ -98,3 +113,4 @@ Use the path where the project keeps its skills. The check reads CSS files, `sty
 - `tokens.css`: knobs and tokens
 - `configs/default.css`: Brief's default config
 - `scripts/check.mjs`: the raw-value check
+- `reference/layout.html`: the layout tokens and rules, rendered

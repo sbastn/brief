@@ -13,7 +13,7 @@ Each component has:
 - a stylesheet next to this file (`typography.css`, `button.css`, `link.css`, `field.css`, `choice.css`, `table.css`), written with tokens only;
 - a reference page in `reference/` that shows every variant, size and state.
 
-`reference/index.html` lists every component, with a preview and a link to its page.
+`reference/index.html` lists every reference page, foundations and components, with a preview and a link to each.
 
 The class names in the stylesheets (`.b-button`, `.b-button--primary`) are the simplest way to use a component, in plain HTML or in a framework. If the project styles components another way, keep the structure, the tokens and the rules, not necessarily the class names.
 

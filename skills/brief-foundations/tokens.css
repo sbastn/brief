@@ -135,9 +135,10 @@
 	--tracking-tight: -0.015em;
 	--tracking-caps: 0.06em;
 
-	/* Layout */
+	/* Layout. Widths don't scale with density: a compact product has tighter spacing, not a narrower page. */
 	--measure: 62ch;
 	--page-max: 1180px;
+	--sidebar-width: 280px;
 
 	/* Elevation. Dark mode needs stronger shadows to read at all. */
 	--shadow-1: 0 1px 2px light-dark(oklch(0.2 0.02 var(--brief-neutral-hue) / 0.06), oklch(0 0 0 / 0.4));

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Layout · Brief reference</title>
+	<link rel="stylesheet" href="../tokens.css">
+	<link rel="stylesheet" href="../configs/default.css">
+	<link rel="stylesheet" href="../../brief-components/typography.css">
+	<link rel="stylesheet" href="../../brief-components/button.css">
+	<link rel="stylesheet" href="../../brief-components/link.css">
+	<link rel="stylesheet" href="../../brief-components/field.css">
+	<link rel="stylesheet" href="../../brief-components/reference/reference.css">
+	<script src="../../brief-components/reference/reference.js"></script>
+</head>
+<body>
+	<main class="ref">
+		<div class="ref-bar">
+			<a class="b-link b-link--standalone ref-back" href="../../brief-components/reference/index.html">← Reference index</a>
+			<button class="b-button b-button--ghost b-button--sm" type="button" data-theme-toggle>Theme: System</button>
+		</div>
+		<header class="ref-intro">
+			<h1>Layout</h1>
+			<p>Space tokens are for gaps and padding. Widths come from three layout tokens, so a page keeps its proportions in every config. Rules are in <code>brief-foundations/SKILL.md</code>; this page shows the result.</p>
+		</header>
+
+		<section class="ref-section" aria-labelledby="widths">
+			<div>
+				<h2 id="widths">Widths</h2>
+				<p>Three tokens, none of them scaled by density. Anything narrower is a fraction of one of them, a percentage or a grid track.</p>
+			</div>
+			<div class="ref-panel">
+				<table class="ref-roles">
+					<thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Use for</th></tr></thead>
+					<tbody>
+						<tr><td><span class="ref-tag">--page-max</span></td><td class="ref-spec">1180px</td><td class="b-small">The widest the page's content gets. Center it; the page background fills the rest. This page stops at it.</td></tr>
+						<tr><td><span class="ref-tag">--measure</span></td><td class="ref-spec">62ch</td><td class="b-small">A column of text or a form. Lines longer than this are tiring to read, and fields wider than this look like they want a paragraph.</td></tr>
+						<tr><td><span class="ref-tag">--sidebar-width</span></td><td class="ref-spec">280px</td><td class="b-small">A column beside the main content: navigation, a list of steps, filters.</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="shell">
+			<div>
+				<h2 id="shell">A page with a sidebar</h2>
+				<p>The sidebar takes <code>--sidebar-width</code>, the main column takes the rest, and the form inside it stops at <code>--measure</code>. On a narrow screen the sidebar goes on top.</p>
+			</div>
+			<div class="ref-panel">
+				<div class="ref-shell">
+					<aside class="ref-shell__side">
+						<span class="ref-tag">--sidebar-width</span>
+						<span class="b-eyebrow">Set up billing</span>
+						<ol class="ref-steps b-small">
+							<li>Plan</li>
+							<li aria-current="step">Payment details</li>
+							<li class="b-muted">Review</li>
+						</ol>
+					</aside>
+					<div class="ref-shell__main">
+						<div class="b-stack-text">
+							<span class="b-eyebrow">Step 2 of 3</span>
+							<h3 class="b-title">Payment details</h3>
+							<p class="b-body b-muted">Invoices go to this address. You can change it later in Billing.</p>
+						</div>
+						<div class="ref-measure">
+							<span class="ref-tag">--measure</span>
+							<div class="b-field">
+								<label class="b-label" for="billing-email">Billing email</label>
+								<input class="b-input" id="billing-email" type="email" value="billing@example.com">
+							</div>
+							<div class="b-field">
+								<label class="b-label" for="vat">VAT number <span class="b-label__optional">(optional)</span></label>
+								<input class="b-input b-input--medium b-input--mono" id="vat" type="text" placeholder="DE123456789">
+							</div>
+							<div class="b-form__actions">
+								<button class="b-button" type="button">Back</button>
+								<button class="b-button b-button--primary" type="button">Continue</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="density">
+			<div>
+				<h2 id="density">Density changes space, not widths</h2>
+				<p>Space tokens scale with <code>--brief-density</code>. A width built from them shrinks when a product is compact and grows when it's roomy, so the same page breaks differently in every config. A layout token stays put.</p>
+			</div>
+			<div class="ref-panel ref-stack">
+				<div class="ref-gauges" role="group" aria-label="calc(var(--space-16) * 11) at three densities">
+					<code class="b-small">calc(var(--space-16) * 11)</code>
+					<div class="ref-gauge"><span class="b-caption">Compact, 598px</span><div class="ref-gauge__track"><div class="ref-gauge__fill ref-gauge__fill--bad" style="width: 66.4%"></div></div></div>
+					<div class="ref-gauge"><span class="b-caption">Default, 704px</span><div class="ref-gauge__track"><div class="ref-gauge__fill ref-gauge__fill--bad" style="width: 78.2%"></div></div></div>
+					<div class="ref-gauge"><span class="b-caption">Roomy, 810px</span><div class="ref-gauge__track"><div class="ref-gauge__fill ref-gauge__fill--bad" style="width: 90%"></div></div></div>
+				</div>
+				<div class="ref-gauges" role="group" aria-label="--measure at three densities">
+					<code class="b-small">var(--measure)</code>
+					<div class="ref-gauge"><span class="b-caption">Compact, 62ch</span><div class="ref-gauge__track"><div class="ref-gauge__fill" style="width: 72%"></div></div></div>
+					<div class="ref-gauge"><span class="b-caption">Default, 62ch</span><div class="ref-gauge__track"><div class="ref-gauge__fill" style="width: 72%"></div></div></div>
+					<div class="ref-gauge"><span class="b-caption">Roomy, 62ch</span><div class="ref-gauge__track"><div class="ref-gauge__fill" style="width: 72%"></div></div></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="dos">
+			<div>
+				<h2 id="dos">Do and don't</h2>
+				<p>Content and padding set heights. A page that fills the window uses <code>min-height: 100dvh</code> on its outermost element. The check rejects any width or height made by multiplying a space token.</p>
+			</div>
+			<div class="ref-columns">
+				<div class="ref-panel ref-stack">
+					<p class="b-subheading">Do</p>
+<pre class="ref-code">.page  { max-width: var(--page-max); margin: 0 auto; }
+.shell { display: grid;
+         grid-template-columns: var(--sidebar-width) 1fr;
+         min-height: 100dvh; }
+.form  { max-width: var(--measure); }
+.short { max-width: calc(var(--measure) / 2); }</pre>
+				</div>
+				<div class="ref-panel ref-stack">
+					<p class="b-subheading">Don't</p>
+<pre class="ref-code">.page   { max-width: calc(var(--space-16) * 22); }
+.column { max-width: calc(var(--space-16) * 11); }
+.panel  { min-height: calc(var(--space-16) * 12); }
+.form   { max-width: 560px; }</pre>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
