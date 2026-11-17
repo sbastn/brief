@@ -15,7 +15,14 @@ Each component has:
 
 `reference/index.html` lists every component, with a preview and a link to its page.
 
-The class names in the stylesheets (`.b-button`, `.b-button--primary`) are one way to build the component. In React or another framework, keep the structure, the tokens and the rules, not necessarily the class names.
+The class names in the stylesheets (`.b-button`, `.b-button--primary`) are the simplest way to use a component, in plain HTML or in a framework. If the project styles components another way, keep the structure, the tokens and the rules, not necessarily the class names.
+
+## Using components
+
+- **When Brief has the component, use it.** Don't restyle it, and don't rebuild it under another name: your own option cards instead of `.b-choice--card`, or your own table instead of `.b-table`. A screen built from Brief's parts changes when Brief changes; a copy doesn't.
+- **Text uses the roles below.** Don't set font sizes, weights or line heights on a screen.
+- **Layout is yours:** the page grid, columns and the spacing between sections. Write it with tokens only.
+- **When a screen needs a component Brief doesn't have, build it from tokens and keep it small.** End your summary with a "Missing from Brief" list naming each one and what it's for. That list is how Brief learns what to add next.
 
 If you can run a browser, render the reference page next to your result before you call it done.
 

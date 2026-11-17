@@ -5,9 +5,19 @@ description: Foundations of the Brief design system — the tokens for color, ty
 
 # Brief foundations
 
-Brief is a design system written for agents. There is no component library to import. You write styles in whatever stack the project uses, with values taken from Brief's tokens.
+Brief is a design system written for agents. It has tokens (this skill) and components (`brief-components`), both plain CSS. There's no JavaScript package to install. Screens use Brief's components, and anything Brief doesn't have yet is built from its tokens, in whatever stack the project uses.
 
 Read this skill before writing any UI styles.
+
+## Setting up a project
+
+Copy these stylesheets into the project and import them once, globally, in this order:
+
+1. `tokens.css`
+2. the project's config (see below)
+3. the stylesheets of the components the project uses, from `brief-components`
+
+Don't edit the copies. To change how Brief looks, change the config. To change Brief itself, change Brief.
 
 ## Two layers
 
@@ -73,7 +83,18 @@ Because screens only use tokens, they get dark mode for free. Rules:
 
 Use `--duration-fast` for hover and press feedback and `--duration-normal` for things that appear or move, both with `--ease`. `--duration-spin` is one turn of a loading spinner. `--duration-fast` and `--duration-normal` drop to zero under `prefers-reduced-motion`, so using the tokens respects that preference for free. Stop spinners yourself under the same preference.
 
+## Before you finish
+
+Run the check on the folders that hold the project's styles, and fix everything it reports:
+
+```bash
+node .claude/skills/brief-foundations/scripts/check.mjs src
+```
+
+Use the path where the project keeps its skills. The check reads CSS files, `style=""` in HTML and `style={{ }}` in JSX and TSX. It fails on any raw color, length or duration. It skips `tokens.css` and config files, which hold the only raw values allowed.
+
 ## Files
 
 - `tokens.css`: knobs and tokens
 - `configs/default.css`: Brief's default config
+- `scripts/check.mjs`: the raw-value check

@@ -1,6 +1,6 @@
 # Brief
 
-A design system made of agent skills. There's no component library: the skills are the system, and agents write the UI in whatever stack the project uses.
+A design system made of agent skills. The skills are the system: rules an agent follows, with tokens and components in plain CSS. There's no JavaScript package, and agents write the UI in whatever stack the project uses.
 
 So far Brief has its foundations (the tokens every value comes from, and the rules for using them) and its first components: typography, the button, the link, the field with its text input, the checkbox and radio, and the table.
 
