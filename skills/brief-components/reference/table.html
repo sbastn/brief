@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Table · Brief reference</title>
+	<link rel="stylesheet" href="../../brief-foundations/tokens.css">
+	<link rel="stylesheet" href="../../brief-foundations/configs/default.css">
+	<link rel="stylesheet" href="../typography.css">
+	<link rel="stylesheet" href="../table.css">
+	<link rel="stylesheet" href="../choice.css">
+	<link rel="stylesheet" href="../button.css">
+	<link rel="stylesheet" href="../link.css">
+	<link rel="stylesheet" href="reference.css">
+	<script src="reference.js"></script>
+</head>
+<body>
+	<main class="ref">
+		<div class="ref-bar">
+			<a class="b-link b-link--standalone ref-back" href="index.html">← All components</a>
+			<button class="b-button b-button--ghost b-button--sm" type="button" data-theme-toggle>Theme: System</button>
+		</div>
+		<header class="ref-intro">
+			<h1>Table</h1>
+			<p>For data people compare across rows, where every row has the same fields. Rules are in <code>brief-components/SKILL.md</code>.</p>
+		</header>
+
+		<section class="ref-section" aria-labelledby="basic">
+			<div>
+				<h2 id="basic">Basic</h2>
+				<p>The identifier comes first and is the row's header. Numbers align right with tabular figures. Row actions go last. The table is sorted by date, newest first.</p>
+			</div>
+			<div class="b-table-wrap">
+				<table class="b-table">
+					<caption class="b-visually-hidden">Invoices</caption>
+					<thead>
+						<tr>
+							<th scope="col">Invoice</th>
+							<th scope="col" aria-sort="descending"><button class="b-table__sort" type="button">Date</button></th>
+							<th scope="col">Status</th>
+							<th scope="col" class="b-table__num"><button class="b-table__sort" type="button">Amount</button></th>
+							<th scope="col" class="b-table__actions"><span class="b-visually-hidden">Actions</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row" class="b-table__mono">INV-2026-0412</th>
+							<td>1 Nov 2026</td>
+							<td>Paid</td>
+							<td class="b-table__num">€240.00</td>
+							<td class="b-table__actions"><a class="b-link" href="#">Download<span class="b-visually-hidden"> INV-2026-0412</span></a></td>
+						</tr>
+						<tr>
+							<th scope="row" class="b-table__mono">INV-2026-0388</th>
+							<td>1 Oct 2026</td>
+							<td>Paid</td>
+							<td class="b-table__num">€240.00</td>
+							<td class="b-table__actions"><a class="b-link" href="#">Download<span class="b-visually-hidden"> INV-2026-0388</span></a></td>
+						</tr>
+						<tr>
+							<th scope="row" class="b-table__mono">INV-2026-0351</th>
+							<td>1 Sep 2026</td>
+							<td>Paid</td>
+							<td class="b-table__num">€192.00</td>
+							<td class="b-table__actions"><a class="b-link" href="#">Download<span class="b-visually-hidden"> INV-2026-0351</span></a></td>
+						</tr>
+						<tr>
+							<th scope="row" class="b-table__mono">INV-2026-0317</th>
+							<td>1 Aug 2026</td>
+							<td class="b-table__muted">Refunded</td>
+							<td class="b-table__num">€192.00</td>
+							<td class="b-table__actions"><a class="b-link" href="#">Download<span class="b-visually-hidden"> INV-2026-0317</span></a></td>
+						</tr>
+						<tr>
+							<th scope="row" class="b-table__mono">INV-2026-0290</th>
+							<td>1 Jul 2026</td>
+							<td>Paid</td>
+							<td class="b-table__num">€1,152.00</td>
+							<td class="b-table__actions"><a class="b-link" href="#">Download<span class="b-visually-hidden"> INV-2026-0290</span></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="selection">
+			<div>
+				<h2 id="selection">Selection</h2>
+				<p>A checkbox column first. The header checkbox selects all and shows mixed when only some rows are selected. Selected rows are tinted.</p>
+			</div>
+			<div class="b-table-wrap">
+				<table class="b-table">
+					<caption>Members</caption>
+					<thead>
+						<tr>
+							<th scope="col" class="b-table__check"><input class="b-checkbox" type="checkbox" aria-label="Select all members" data-indeterminate></th>
+							<th scope="col">Name</th>
+							<th scope="col">Email</th>
+							<th scope="col">Role</th>
+							<th scope="col">Last active</th>
+							<th scope="col" class="b-table__actions"><span class="b-visually-hidden">Actions</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="b-table__check"><input class="b-checkbox" type="checkbox" aria-label="Select Alex Kim"></td>
+							<th scope="row">Alex Kim</th>
+							<td class="b-table__mono b-table__muted">alex@example.com</td>
+							<td>Admin</td>
+							<td class="b-table__muted">2 hours ago</td>
+							<td class="b-table__actions"><button class="b-button b-button--ghost b-button--sm" type="button">Remove<span class="b-visually-hidden"> Alex Kim</span></button></td>
+						</tr>
+						<tr aria-selected="true">
+							<td class="b-table__check"><input class="b-checkbox" type="checkbox" aria-label="Select Sam Ortiz" checked></td>
+							<th scope="row">Sam Ortiz</th>
+							<td class="b-table__mono b-table__muted">sam@example.com</td>
+							<td>Editor</td>
+							<td class="b-table__muted">Yesterday</td>
+							<td class="b-table__actions"><button class="b-button b-button--ghost b-button--sm" type="button">Remove<span class="b-visually-hidden"> Sam Ortiz</span></button></td>
+						</tr>
+						<tr aria-selected="true">
+							<td class="b-table__check"><input class="b-checkbox" type="checkbox" aria-label="Select Jo Lindqvist" checked></td>
+							<th scope="row">Jo Lindqvist</th>
+							<td class="b-table__mono b-table__muted">jo@example.com</td>
+							<td>Editor</td>
+							<td class="b-table__muted">3 days ago</td>
+							<td class="b-table__actions"><button class="b-button b-button--ghost b-button--sm" type="button">Remove<span class="b-visually-hidden"> Jo Lindqvist</span></button></td>
+						</tr>
+						<tr>
+							<td class="b-table__check"><input class="b-checkbox" type="checkbox" aria-label="Select Priya Natarajan"></td>
+							<th scope="row">Priya Natarajan</th>
+							<td class="b-table__mono b-table__muted">priya@example.com</td>
+							<td>Viewer</td>
+							<td class="b-table__muted">Never</td>
+							<td class="b-table__actions"><button class="b-button b-button--ghost b-button--sm" type="button">Remove<span class="b-visually-hidden"> Priya Natarajan</span></button></td>
+						</tr>
+						<tr>
+							<td class="b-table__check"><input class="b-checkbox" type="checkbox" aria-label="Select Morgan Lee"></td>
+							<th scope="row">Morgan Lee</th>
+							<td class="b-table__mono b-table__muted">morgan@example.com</td>
+							<td>Viewer</td>
+							<td class="b-table__muted">2 weeks ago</td>
+							<td class="b-table__actions"><button class="b-button b-button--ghost b-button--sm" type="button">Remove<span class="b-visually-hidden"> Morgan Lee</span></button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="compact">
+			<div>
+				<h2 id="compact">Compact</h2>
+				<p>Less padding, for long tables people scan rather than read. Long values cut off with an ellipsis; the full value is in the cell's title.</p>
+			</div>
+			<div class="b-table-wrap">
+				<table class="b-table b-table--compact">
+					<caption class="b-visually-hidden">API keys</caption>
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Key</th>
+							<th scope="col">Scopes</th>
+							<th scope="col" class="b-table__num">Requests (30 days)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr><th scope="row" class="b-table__fit">Production</th><td class="b-table__mono">key_…f3a9</td><td class="b-table__truncate" title="projects:read, projects:write, invoices:read, members:read, members:write, webhooks:write">projects:read, projects:write, invoices:read, members:read, members:write, webhooks:write</td><td class="b-table__num">182,004</td></tr>
+						<tr><th scope="row" class="b-table__fit">Staging</th><td class="b-table__mono">key_…07c2</td><td class="b-table__truncate" title="projects:read, projects:write">projects:read, projects:write</td><td class="b-table__num">9,310</td></tr>
+						<tr><th scope="row" class="b-table__fit">Reporting script</th><td class="b-table__mono">key_…b81e</td><td class="b-table__truncate" title="invoices:read">invoices:read</td><td class="b-table__num">744</td></tr>
+						<tr><th scope="row" class="b-table__fit">Old integration</th><td class="b-table__mono">key_…4d10</td><td class="b-table__truncate" title="projects:read">projects:read</td><td class="b-table__num">0</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="ref-section" aria-labelledby="empty">
+			<div>
+				<h2 id="empty">Empty</h2>
+				<p>Keep the headers, so people see what will be here. One row says what's missing and what to do.</p>
+			</div>
+			<div class="b-table-wrap">
+				<table class="b-table">
+					<caption class="b-visually-hidden">Webhooks</caption>
+					<thead>
+						<tr>
+							<th scope="col">Endpoint</th>
+							<th scope="col">Events</th>
+							<th scope="col">Last delivery</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr><td class="b-table__empty" colspan="3"><p class="b-small">No webhooks yet. Add one to get notified when invoices are paid or projects change.</p><p class="ref-empty-action"><button class="b-button b-button--sm" type="button">Add webhook</button></p></td></tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+	<script>
+		document.querySelectorAll('[data-indeterminate]').forEach((el) => (el.indeterminate = true));
+	</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+/*
+ * Table. Tokens only.
+ *
+ * A real <table>, wrapped in .b-table-wrap so wide tables scroll inside their frame,
+ * never the page.
+ */
+
+.b-table-wrap {
+	overflow-x: auto;
+	background: var(--surface);
+	border: var(--border-width) solid var(--border-subtle);
+	border-radius: var(--radius-lg);
+}
+
+.b-table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	font-size: var(--text-sm);
+	line-height: var(--leading-snug);
+	color: var(--text);
+}
+
+.b-table caption {
+	caption-side: top;
+	padding: var(--space-4) var(--space-4) var(--space-3);
+	text-align: left;
+	font-size: var(--text-md);
+	font-weight: var(--weight-semibold);
+}
+
+/* Header */
+
+.b-table th {
+	font-weight: var(--weight-medium);
+	text-align: left;
+}
+
+.b-table thead th {
+	padding: var(--space-2) var(--space-4);
+	font-size: var(--text-xs);
+	font-weight: var(--weight-medium);
+	color: var(--text-muted);
+	white-space: nowrap;
+	background: var(--surface-page);
+	border-bottom: var(--border-width) solid var(--border-subtle);
+}
+
+.b-table--sticky thead th {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+/* Cells */
+
+.b-table td,
+.b-table tbody th {
+	padding: var(--space-3) var(--space-4);
+	vertical-align: middle;
+	border-bottom: var(--border-width) solid var(--border-subtle);
+}
+
+.b-table tbody tr:last-child > * {
+	border-bottom: 0;
+}
+
+.b-table tbody tr {
+	transition: background var(--duration-fast) var(--ease);
+}
+.b-table tbody tr:hover {
+	background: var(--surface-page);
+}
+.b-table tbody tr[aria-selected='true'] {
+	background: var(--surface-selected);
+}
+
+/* Column kinds */
+
+.b-table .b-table__num {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.b-table .b-table__mono {
+	font-family: var(--font-mono);
+	font-size: var(--text-xs);
+	white-space: nowrap;
+}
+
+.b-table .b-table__muted {
+	color: var(--text-muted);
+}
+
+/* Shrinks to its content: checkboxes and actions */
+.b-table .b-table__fit {
+	width: 1%;
+	white-space: nowrap;
+}
+
+.b-table .b-table__check {
+	width: 1%;
+	padding-right: 0;
+}
+
+.b-table .b-table__actions {
+	width: 1%;
+	text-align: right;
+	white-space: nowrap;
+}
+
+/* Long text: one line, cut with an ellipsis; the full value goes in title="" */
+.b-table .b-table__truncate {
+	max-width: 0;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Sorting: the header holds a button; aria-sort on the <th> drives the arrow */
+
+.b-table__sort {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-1);
+	margin: calc(var(--space-1) * -1) calc(var(--space-2) * -1);
+	padding: var(--space-1) var(--space-2);
+	font: inherit;
+	color: inherit;
+	background: transparent;
+	border: 0;
+	border-radius: var(--radius-sm);
+	cursor: pointer;
+}
+.b-table__sort:hover {
+	color: var(--text);
+	background: var(--surface-hover);
+}
+.b-table__sort:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 var(--focus-width) var(--focus-ring);
+}
+.b-table__sort::after {
+	content: '\2195' / '';
+	color: var(--text-subtle);
+}
+.b-table th[aria-sort] .b-table__sort {
+	color: var(--text);
+}
+.b-table th[aria-sort='ascending'] .b-table__sort::after {
+	content: '\2191' / '';
+	color: var(--accent-text);
+}
+.b-table th[aria-sort='descending'] .b-table__sort::after {
+	content: '\2193' / '';
+	color: var(--accent-text);
+}
+
+/* Empty: one row across every column */
+
+.b-table .b-table__empty {
+	padding: var(--space-10) var(--space-6);
+	text-align: center;
+	color: var(--text-muted);
+}
+
+/* Compact: for long tables people scan, not read */
+
+.b-table--compact td,
+.b-table--compact tbody th {
+	padding: var(--space-2) var(--space-3);
+}
+.b-table--compact thead th {
+	padding: var(--space-2) var(--space-3);
+}

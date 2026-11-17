@@ -104,3 +104,13 @@
 .b-stack-text > .b-heading + *,
 .b-stack-text > .b-subheading + * { margin-top: var(--space-1); }
 .b-stack-text > .b-body + .b-body { margin-top: var(--space-3); }
+
+/* Hidden on screen, read by screen readers: table captions, extra context for icon buttons */
+.b-visually-hidden {
+	position: absolute;
+	width: var(--border-width);
+	height: var(--border-width);
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}

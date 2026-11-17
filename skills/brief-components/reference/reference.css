@@ -61,3 +61,5 @@ body {
 .ref-preview-field { width: 100%; max-width: calc(var(--measure) / 2.4); }
 .ref-preview-field .b-input { display: flex; align-items: center; }
 .ref-indent { padding-left: calc(1.15em + var(--space-2)); }
+.ref-empty-action { margin-top: var(--space-3); }
+.ref-preview-table { width: auto; background: var(--surface); border: var(--border-width) solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; }

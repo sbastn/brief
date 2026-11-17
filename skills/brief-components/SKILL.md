@@ -1,6 +1,6 @@
 ---
 name: brief-components
-description: Components of the Brief design system and the rules for using them. So far, typography (text roles), the button, the link, the field with its text input, and the checkbox and radio. Use when styling text, or adding a button, a link, a form field, a text input, a checkbox or a radio, in a project that uses Brief.
+description: Components of the Brief design system and the rules for using them. So far, typography (text roles), the button, the link, the field with its text input, the checkbox and radio, and the table. Use when styling text, or adding a button, a link, a form field, a text input, a checkbox, a radio or a table, in a project that uses Brief.
 ---
 
 # Brief components
@@ -10,7 +10,7 @@ Read `brief-foundations` first. Components are built from its tokens and follow 
 Each component has:
 
 - a section below: when to use it, its variants, sizes and states, and what not to do;
-- a stylesheet next to this file (`typography.css`, `button.css`, `link.css`, `field.css`, `choice.css`), written with tokens only;
+- a stylesheet next to this file (`typography.css`, `button.css`, `link.css`, `field.css`, `choice.css`, `table.css`), written with tokens only;
 - a reference page in `reference/` that shows every variant, size and state.
 
 `reference/index.html` lists every component, with a preview and a link to its page.
@@ -242,4 +242,51 @@ Reference: `reference/choice.html`.
 - `<input class="b-checkbox" type="checkbox">` and `<input class="b-radio" type="radio">` with a shared `name` per radio group.
 - Wrap groups in `<fieldset>` with a `<legend>`. Put `aria-describedby` on the fieldset for its error, and `aria-invalid="true"` while it shows.
 - `[data-state]` in `choice.css` only exists so reference pages can show states in a static render. Never set it in a product.
+
+## Table
+
+For data people compare across rows, where every row has the same fields: invoices, members, API keys. A real `<table class="b-table">` inside `.b-table-wrap`, which gives it a frame and scrolls it sideways when it's too wide.
+
+Reference: `reference/table.html`.
+
+### When not to use one
+
+- Not for layout.
+- Not for things with only one or two fields; a list reads better.
+- Not for a single record's details (a settings page, a profile); use headings and text.
+
+### Columns
+
+- **The identifier comes first** and is the row's header: `<th scope="row">`. An invoice number, a person's name, a key's name.
+- **Numbers align right** (`.b-table__num`) with tabular figures and the same number of decimals, so they line up. The header aligns with its column.
+- **Text aligns left.** Values people copy (IDs, emails, keys) use `.b-table__mono`.
+- **Dates use one format** in a column, and say "Yesterday" or "2 hours ago" only for recent activity.
+- **Headers are short nouns** in sentence case: "Last active", not "LAST ACTIVE DATE".
+- **Row actions go last** (`.b-table__actions`): one or two ghost small buttons or links. Their accessible name includes the row ("Remove Sam Ortiz"), using `.b-visually-hidden` text.
+- **Secondary values** step back with `.b-table__muted`, not a smaller size.
+
+### Selection, sorting and density
+
+- **Selection:** a checkbox column first (`.b-table__check`). The header checkbox selects all and shows mixed when only some rows are selected. Selected rows get `aria-selected="true"` and are tinted.
+- **Sorting:** only on columns where order helps (dates, amounts, names). The header holds a `<button class="b-table__sort">`, and `aria-sort` on the `<th>` shows the direction. Say or show the default sort.
+- **Compact** (`--compact`) for long tables people scan rather than read. Default otherwise.
+- **Sticky header** (`--sticky`) when the table scrolls inside a fixed-height area.
+- **Long text** cuts off with an ellipsis (`.b-table__truncate`) and puts the full value in `title`. Never truncate the identifier.
+
+### Empty
+
+Keep the headers, so people see what will be there. One row across every column (`.b-table__empty`) says what's missing and offers the action that fills it.
+
+### Don't
+
+- Don't stripe rows. Row lines and a hover tint read better and leave tint free for selection.
+- Don't paginate under a few hundred rows. Filter instead.
+- Don't make the whole row a link when it also has checkboxes or actions.
+- Don't let a wide table scroll the page sideways. It scrolls inside its wrapper.
+
+### Building it
+
+- `<caption>` names the table. Hide it with `.b-visually-hidden` when a heading above already does.
+- `<th scope="col">` for column headers, `<th scope="row">` for the identifier cell.
+- An empty header for the actions column still gets visually hidden text ("Actions").
 
